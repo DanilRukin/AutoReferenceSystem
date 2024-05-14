@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F6A4FB27-7877-4602-C595-45614D792B72" name="Users">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>2BC3C4D1-795C-7DF1-CE54-1DA8338D783E</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="user_id" id="B812345A-0099-B4CC-017C-01C2AEEEB5D1">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>C403A2C3-E136-FE4A-4EE8-BC9955F84CCD</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="first_name" id="23CDF2B3-4EAC-5B54-37C3-68F41F6F02DB">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>4D686B93-825F-2598-7812-FE5741DC6790</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="last_name" id="13D5D6CF-6763-8939-C194-900E066F8FE1">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>33E0BAE9-1092-57B8-7D0B-D2DDBE62B8B1</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="patronymic" id="9BBEF139-E03D-12A5-DE8A-8B03F4989EC0">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>33F21E41-C6F2-E7E3-2A7C-182334408CF6</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500</dataTypeSize>
+<ownDataTypeParameters>500,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="login" id="7AF13C4A-D860-C96C-206F-438E169B700A">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>53428BFB-3C00-4E08-663F-A1DFD1DB43D3</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="e-mail" id="7D4257E6-35B3-EB06-1C19-6B65A80117D6">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>B05CFE0F-9820-CC54-0E11-5C34B6F6A285</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>250</dataTypeSize>
+<ownDataTypeParameters>250,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="61F6C821-1596-3945-4680-2CA7A954CA18" name="Users_PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>4682937B-54B0-B3F8-69DD-245FEBF67A0C</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B812345A-0099-B4CC-017C-01C2AEEEB5D1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

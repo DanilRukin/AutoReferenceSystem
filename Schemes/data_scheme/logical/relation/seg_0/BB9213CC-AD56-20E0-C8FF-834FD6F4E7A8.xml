@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_5" directorySegmentName="seg_0" id="BB9213CC-AD56-20E0-C8FF-834FD6F4E7A8">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:02:02 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<sourcePk>59625C8E-095A-C6B1-D30E-11566F729A17</sourcePk>
+<identifying>true</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>F8055B3C-027B-F416-4630-136A0371169B</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F4B7A7A3-01D5-B03F-450C-5E1C1CEC4AEA</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

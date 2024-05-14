@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D9DA73F8-D2F9-0DEE-6DF5-A274E78EC7A6" name="Model">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-11 14:11:57 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_model" id="3C5F19E2-6452-A83E-7594-364D69F7E3F5">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-11 14:12:52 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="F1402ABC-7E7A-4188-997B-F6EB1854DD32">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-11 14:13:44 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="375724D3-5D3C-D548-DCCF-BA2693E6AD99" name="Model PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-11 14:13:36 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3C5F19E2-6452-A83E-7594-364D69F7E3F5</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

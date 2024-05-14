@@ -1,0 +1,15 @@
+﻿﻿﻿//
+// Add migrations
+//
+Add-Migration InitAutoReferenceSystemDbContext -c AutoReferenceSystemContext -o Migrations/AutoReferenceSystemDb
+//
+// Update-Database
+//
+Update-Database -Context AutoReferenceSystemContext
+
+
+// note: to add-migration and update database you need to select AutoReferenceSystem.ApplicationServer.Server as startup project,
+// you should select AutoReferenceSystem.ApplicationServer.Data.PostgreSql project with your migrations assembly in PM console,
+// also you need to add the following references: 
+// 1) AutoReferenceSystem.ApplicationServer.Data.PostgreSql has reference to Sibers.ProjectManagementSystem.Data (AutoReferenceSystemContext is here)
+// 2) AutoReferenceSystem.ApplicationServer.Server has reference to Sibers.ProjectManagementSystem.Data and AutoReferenceSystem.ApplicationServer.Data.PostgreSql

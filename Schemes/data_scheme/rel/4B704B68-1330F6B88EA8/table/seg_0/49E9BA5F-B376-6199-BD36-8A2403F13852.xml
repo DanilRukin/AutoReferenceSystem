@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="49E9BA5F-B376-6199-BD36-8A2403F13852" name="Session">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>0DC60914-309E-F413-0720-082549D57D7A</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_session" id="38300737-ADE7-C532-EBF2-29045990045C">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>DCBEDE30-253E-3E24-7EDE-4D89C790AA56</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_user_id" id="2A73E769-1459-4526-4926-FF2D7818F75E">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>B57F3C33-FFA9-912C-75FA-B4709FD07458</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7FFCBEC8-39CF-4A4A-0BBA-2257E2E8FD6E" referredColumn="B812345A-0099-B4CC-017C-01C2AEEEB5D1"/>
+</associations>
+</Column>
+<Column name="begin_date" id="E71DDABC-A477-0D76-F480-3FD3E93250E3">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>6D174886-04A6-2BC6-3292-F1819EE0AD80</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="end_date" id="B7C45F59-DB35-82BF-9897-B1AB4DFEF8C0">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>CCA5AEFF-48D9-85CC-6C9A-AA91AB24D4DC</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="805D6429-5027-D5C1-5D45-570CD17EFDA0" name="Session_PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>3DD9BD24-FE42-0600-6D71-1596A5993A4E</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="38300737-ADE7-C532-EBF2-29045990045C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9425A98B-C16E-5ABA-8E3A-7824ABBA035E" name="Session_Users_FK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>2A399911-1EFB-F4F0-293C-27393CF85139</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2A73E769-1459-4526-4926-FF2D7818F75E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

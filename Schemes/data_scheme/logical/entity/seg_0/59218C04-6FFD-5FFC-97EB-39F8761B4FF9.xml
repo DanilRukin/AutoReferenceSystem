@@ -1,0 +1,112 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="59218C04-6FFD-5FFC-97EB-39F8761B4FF9" name="Attachments">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:43:47 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_attachment" id="4C9A66A3-EE1E-A7F3-8262-52BBD9256029">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:44:59 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="creation_date" id="E79DC6C5-9AB9-B6D4-5469-087EA0B4C45A">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:45:16 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="attchment_size_in_bytes" id="07EB4F0B-70B2-84FA-45FA-336D894F5707">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:45:16 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_attachment_type" id="E997AE13-646E-F981-1BEE-2912D1B6BFF6">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:47:08 UTC</createdTime>
+<generatorID>E53226AC-F81D-8963-DF7B-013205DB4C1B</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<referedAttribute>01673E44-B394-267B-DB93-DE232A42581E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="path" id="91E0B330-86EE-D07C-7BED-55FD1E549CEB">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:47:58 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2048</dataTypeSize>
+<ownDataTypeParameters>2048,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_query" id="B69F7169-1FB0-9131-BAD1-FDF86598145D">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:49:20 UTC</createdTime>
+<generatorID>9778A618-32A8-2F51-D5F3-20E8BF71AB46</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<referedAttribute>4D90BED1-6BCC-888D-E898-FCA3D2D74C0B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4060D0A5-0B7F-07DF-030D-157DA571A2B5" name="Attachments PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:45:14 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4C9A66A3-EE1E-A7F3-8262-52BBD9256029</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

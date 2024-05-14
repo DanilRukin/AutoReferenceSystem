@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D8A7B597-2D86-D999-8E00-6F50514DFE6A" name="ListValuesCharacteristics">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>DFD00CB1-DBF3-CEAA-C8D9-E05487322B21</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ListValues_id_list_value" id="7EE23CDC-5DD7-F481-E174-D25F00DC71CF">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>D2EB9661-6BFB-0986-D02B-3EBB7B84B338</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0772F1FE-57F3-BDBE-977C-4127B5C80D1F" referredColumn="38AE523F-8A33-3E99-A846-B93E509E47F2"/>
+</associations>
+</Column>
+<Column name="Characteristics_id_characteristics" id="8E3C234C-385D-BA9C-0892-231BD62BEBC4">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>309990DF-9321-EEDC-F557-B8D83ACBF7B6</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6B0DA482-472F-4A45-0F9B-0B7995D6F711" referredColumn="5B6D676D-8131-FB6F-DB8A-02563E394DDE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6E408895-0E2D-0232-6097-6573D0A2A871" name="ListValuesCharacteristics_PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>1712625E-6136-2401-6DEC-F55830BB7384</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7EE23CDC-5DD7-F481-E174-D25F00DC71CF"/>
+<colUsage columnID="8E3C234C-385D-BA9C-0892-231BD62BEBC4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8E2FA319-94C4-8625-E871-28EEE825FED0" name="ListValuesCharacteristics_Characteristics_FK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>5EB89A17-54C9-A98D-1207-A1B5380F4A86</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8E3C234C-385D-BA9C-0892-231BD62BEBC4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7B42B755-87E5-05DF-F3A1-33D63BD49116" name="ListValuesCharacteristics_ListValues_FK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>3ABC5F5E-9BF0-D4DF-89CE-22BFA24D610A</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7EE23CDC-5DD7-F481-E174-D25F00DC71CF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

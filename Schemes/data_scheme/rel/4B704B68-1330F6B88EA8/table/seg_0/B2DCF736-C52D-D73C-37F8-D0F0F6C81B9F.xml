@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B2DCF736-C52D-D73C-37F8-D0F0F6C81B9F" name="Attachments">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>59218C04-6FFD-5FFC-97EB-39F8761B4FF9</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_attachment" id="75609D15-00F8-20AA-469F-F9BC650CAA28">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>4C9A66A3-EE1E-A7F3-8262-52BBD9256029</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="creation_date" id="4E8B646F-89DB-600B-2808-A16DB9E7233D">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>E79DC6C5-9AB9-B6D4-5469-087EA0B4C45A</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="attchment_size_in_bytes" id="87E83099-0D4E-D3B5-DB51-AA23D603E7A0">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>07EB4F0B-70B2-84FA-45FA-336D894F5707</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="AttachmentType_id_attachment_type" id="00F555AC-F690-60A1-3146-3B08CDAE2855">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>E997AE13-646E-F981-1BEE-2912D1B6BFF6</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="E991369F-F729-4837-BF92-BBEBADD538A1" referredColumn="7199C30E-6931-6DCE-D71B-8CDA5C1B18EE"/>
+</associations>
+</Column>
+<Column name="path" id="8985DA16-4D7B-6FCE-259A-54221222324F">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>91E0B330-86EE-D07C-7BED-55FD1E549CEB</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2048</dataTypeSize>
+<ownDataTypeParameters>2048,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ReferencingQuery_id_query" id="974058A1-ABBE-CFE1-53AE-0E8BAD7E78A1">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>B69F7169-1FB0-9131-BAD1-FDF86598145D</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BAEA9142-BF83-9B4A-7565-605F0948C3F4" referredColumn="593F5089-F3B8-B6D5-BD2C-F78FD7B853C0"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E9FC0050-EFDD-E4A2-7B83-C94ED05C8567" name="Attachments_PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>4060D0A5-0B7F-07DF-030D-157DA571A2B5</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="75609D15-00F8-20AA-469F-F9BC650CAA28"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B9D3EBEE-7670-8963-C4D6-2B9A60B74205" name="Attachments_AttachmentType_FK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>E53226AC-F81D-8963-DF7B-013205DB4C1B</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="00F555AC-F690-60A1-3146-3B08CDAE2855"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E3CCEAF0-DB77-2091-EF7E-13C6FA1553D0" name="Attachments_ReferencingQuery_FK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>9778A618-32A8-2F51-D5F3-20E8BF71AB46</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="974058A1-ABBE-CFE1-53AE-0E8BAD7E78A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

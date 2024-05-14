@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F8055B3C-027B-F416-4630-136A0371169B" name="Characteristics">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:51:19 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_characteristics" id="3C36DCD1-635B-1AEE-FE1E-2F2C4001F3E7">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:58:33 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="7765C0A4-34C1-6CFF-7FBE-4B0C9A0CCC0C">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:59:03 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_characteristics_type" id="073B21E4-6B42-12CF-24D4-BC07AE9FD7D8">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:59:50 UTC</createdTime>
+<generatorID>A7028378-8EC2-8EE2-F77E-6C51A9FA2BD4</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<referedAttribute>CC8FE8DD-EE4D-E9C8-3C81-9A38B671F167</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_measure" id="AEB2762D-F51E-A73B-3311-F37B6D4D34F2">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-14 14:40:27 UTC</createdTime>
+<generatorID>650992E7-3C47-BAE2-50CF-001EEB028D65</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<referedAttribute>C3963412-6C8B-EC8A-FC4D-F3D758B58BDD</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="59625C8E-095A-C6B1-D30E-11566F729A17" name="ScoreCriterion PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:59:01 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3C36DCD1-635B-1AEE-FE1E-2F2C4001F3E7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

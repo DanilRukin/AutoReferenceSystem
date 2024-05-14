@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="E991369F-F729-4837-BF92-BBEBADD538A1" containerWithKeyObject="B2DCF736-C52D-D73C-37F8-D0F0F6C81B9F" localFKIndex="B9D3EBEE-7670-8963-C4D6-2B9A60B74205" name="Attachments_AttachmentType_FK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>E53226AC-F81D-8963-DF7B-013205DB4C1B</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<referredTableLongName>AttachmentType</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>2E78A2FD-312B-3D4F-7457-F89BD19CB2C7</referredTableID>
+<keyObject>4874C4A2-0649-52A9-05FF-257879984097</keyObject>
+<referredKeyID>4874C4A2-0649-52A9-05FF-257879984097</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_attachment_type</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A8FA4B1F-367C-D8DC-A8B9-F0BEE5EAF0C3" name="ReferencingQuery">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:39:18 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_query" id="4D90BED1-6BCC-888D-E898-FCA3D2D74C0B">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:39:45 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="query_number" id="2BADFD13-26FA-0063-A036-57A7E66E57B9">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:40:24 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_session" id="BC968875-F789-E8C7-7A06-7148763FFCD4">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:43:43 UTC</createdTime>
+<generatorID>E4C999A7-31C6-A013-798A-4492475E82A7</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<referedAttribute>DCBEDE30-253E-3E24-7EDE-4D89C790AA56</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_model" id="078093CE-A130-0A16-BDB1-1EE84778C0A1">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:52:44 UTC</createdTime>
+<generatorID>F2B31C4F-EDA0-CC18-8E8D-C4FB9D529F57</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<referedAttribute>3C5F19E2-6452-A83E-7594-364D69F7E3F5</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="3EED57A9-8BDD-3BB7-7108-92922F7A005B" name="ReferencingQuery PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 13:39:57 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4D90BED1-6BCC-888D-E898-FCA3D2D74C0B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

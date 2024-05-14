@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_18" directorySegmentName="seg_0" id="650992E7-3C47-BAE2-50CF-001EEB028D65">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-14 14:40:27 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<sourcePk>985004AC-81C3-9BFB-256C-7FB430CF6545</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>57495587-B4B5-3683-E4E8-4F0580F00B51</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F8055B3C-027B-F416-4630-136A0371169B</targetEntity>
+<transferable>true</transferable>
+</Relation>

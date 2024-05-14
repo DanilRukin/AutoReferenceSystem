@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1C5396C2-6DBD-F5ED-1365-5BD1E7E2812B" name="ReferencingQueryCharacteristics">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>F4B7A7A3-01D5-B03F-450C-5E1C1CEC4AEA</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Characteristics_id_characteristics" id="CA5AC13D-051C-F292-7FBA-E02FD8E6D53F">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>D7CA00D9-7FC4-F1BA-FE43-E2BE51CDD5FC</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AD9DF38D-7B0A-C309-2B28-CEC5F46BBCEA" referredColumn="5B6D676D-8131-FB6F-DB8A-02563E394DDE"/>
+</associations>
+</Column>
+<Column name="ReferencingQuery_id_query" id="9D151A15-5A15-000E-06BA-22338E59DC6D">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>51FD5AC6-3CCA-13D4-A566-8693D9AB5471</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT057</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3E8555D8-F59F-489D-FB33-9A7DFF1FB8B9" referredColumn="593F5089-F3B8-B6D5-BD2C-F78FD7B853C0"/>
+</associations>
+</Column>
+<Column name="value" id="53F434D5-4003-21F6-35DB-8424F9BD5D66">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>2659D83B-C400-EEA6-35B2-B98C4E945F4A</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>512</dataTypeSize>
+<ownDataTypeParameters>512,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ECDB86CA-BAB4-ECA6-A45C-A22384B7DF9B" name="ReferencingQueryCharacteristics_PK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>5353B928-C291-4E4E-8C16-B3DA81CBA925</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA5AC13D-051C-F292-7FBA-E02FD8E6D53F"/>
+<colUsage columnID="9D151A15-5A15-000E-06BA-22338E59DC6D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BF4020A2-F85E-2B7F-64FA-B0EE7CE1059C" name="ReferencingQueryCharacteristics_Characteristics_FK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>BB9213CC-AD56-20E0-C8FF-834FD6F4E7A8</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA5AC13D-051C-F292-7FBA-E02FD8E6D53F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E298A286-6DB5-B29B-5EBD-0B124EBC0431" name="ReferencingQueryCharacteristics_ReferencingQuery_FK">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-13 14:57:16 UTC</createdTime>
+<generatorID>24F2B0D7-1CED-063D-C799-BA858C307B95</generatorID>
+<ownerDesignName>data_scheme</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9D151A15-5A15-000E-06BA-22338E59DC6D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
