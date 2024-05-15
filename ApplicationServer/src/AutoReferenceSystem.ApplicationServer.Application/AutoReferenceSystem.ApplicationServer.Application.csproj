@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Referencing\Commands\" />
+    <Folder Include="Referencing\Queries\" />
+    <Folder Include="Users\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutoReferenceSystem.ApplicationServer.Data\AutoReferenceSystem.ApplicationServer.Data.csproj" />
+    <ProjectReference Include="..\AutoReferenceSystem.ApplicationServer.Domain\AutoReferenceSystem.ApplicationServer.Domain.csproj" />
+    <ProjectReference Include="..\AutoReferenceSystem.ApplicationServer.SharedKernel\AutoReferenceSystem.ApplicationServer.SharedKernel.csproj" />
+  </ItemGroup>
+
 </Project>
