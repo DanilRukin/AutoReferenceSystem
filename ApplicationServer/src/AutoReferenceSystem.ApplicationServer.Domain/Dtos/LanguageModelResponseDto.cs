@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AutoReferenceSystem.ApplicationServer.Domain.Dtos
 {
-    public class AbstractOptionsDto
+    public class LanguageModelResponseDto
     {
-        public int ModelId { get; set; }
+        public string Abstract { get; set; } = string.Empty;
+        public TimeSpan WorkingTime { get; set; }
     }
 }

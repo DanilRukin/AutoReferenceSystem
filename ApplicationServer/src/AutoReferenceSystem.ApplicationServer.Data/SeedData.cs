@@ -20,6 +20,8 @@ namespace AutoReferenceSystem.ApplicationServer.Data
 
         public static ReferensingQuery TestReferensingQuery { get; private set; }
 
+        public static Server TestServer { get; set; }
+
         public static void ApplyMigrationAndFillDatabase(AutoReferenceSystemContext context)
         {
             context.Database.Migrate();
@@ -78,10 +80,18 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                     QueryNumber = 1,
                 };
 
+                TestServer = new Server()
+                {
+                    Address = "192.168.1.123",
+                    User = "guest",
+                    UserPassword = "123",
+                };
+
                 context.Users.Add(TestUser);
                 context.Sessions.Add(TestUserSession);
                 context.Models.AddRange(Bert, Llamma);
                 context.ReferensingQueries.Add(TestReferensingQuery);
+                context.Servers.Add(TestServer);
 
                 TestUser.Sessions?.Append(TestUserSession);
 
@@ -95,6 +105,8 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                 TestReferensingQuery.ModelId = Bert.Id;
 
                 Bert.ReferensingQueries?.Append(TestReferensingQuery);
+                Bert.Server = TestServer;
+                Bert.ServerId = TestServer.Id;
 
                 context.SaveChanges();
 
@@ -128,6 +140,8 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                 context.ReferencingQueryCharacteristics.RemoveRange(context.ReferencingQueryCharacteristics);
             if (context.Characteristics.Any())
                 context.Characteristics.RemoveRange(context.Characteristics);
+            if (context.Servers.Any())
+                context.Servers.RemoveRange(context.Servers);
             context.SaveChanges();
             _empty = true;
         }

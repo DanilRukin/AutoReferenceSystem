@@ -21,5 +21,10 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Entities
         public IEnumerable<ReferensingQuery> ReferensingQueries { get; set; } = Enumerable.Empty<ReferensingQuery>();
 
         public IEnumerable<ModelCharacteristic> ModelCharacteristics { get; set; } = Enumerable.Empty<ModelCharacteristic>();
+
+        public Server Server { get; set; }
+
+        [Column("id_server")]
+        public int ServerId { get; set; }
     }
 }

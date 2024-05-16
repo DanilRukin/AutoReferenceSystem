@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D9DA73F8-D2F9-0DEE-6DF5-A274E78EC7A6" name="Model">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="950023A2-2823-51EF-27AE-536B702A5042" name="Server">
 <createdBy>Rukin</createdBy>
-<createdTime>2024-05-11 14:11:57 UTC</createdTime>
+<createdTime>2024-05-16 13:30:52 UTC</createdTime>
 <ownerDesignName>data_scheme</ownerDesignName>
 <engineerTo>
 <item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_model" id="3C5F19E2-6452-A83E-7594-364D69F7E3F5">
+<Attribute name="id_server" id="145BFCE9-E236-AC66-197F-E507B9855B49">
 <createdBy>Rukin</createdBy>
-<createdTime>2024-05-11 14:12:52 UTC</createdTime>
+<createdTime>2024-05-16 13:31:07 UTC</createdTime>
 <ownerDesignName>data_scheme</ownerDesignName>
 <engineerTo>
 <item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
@@ -27,9 +27,9 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="name" id="F1402ABC-7E7A-4188-997B-F6EB1854DD32">
+<Attribute name="address" id="36FE8687-508D-9F26-336B-8EE39737C51D">
 <createdBy>Rukin</createdBy>
-<createdTime>2024-05-11 14:13:44 UTC</createdTime>
+<createdTime>2024-05-16 13:31:20 UTC</createdTime>
 <ownerDesignName>data_scheme</ownerDesignName>
 <engineerTo>
 <item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
@@ -37,35 +37,47 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id_server" id="6333E8E2-95AE-1045-8863-D35F33BB092D">
+<Attribute name="user" id="50C6DD43-7727-2E9D-7C31-99A6BAD302FB">
 <createdBy>Rukin</createdBy>
-<createdTime>2024-05-16 13:38:38 UTC</createdTime>
-<generatorID>4A691659-989B-9034-F404-9B6B54EEAC58</generatorID>
+<createdTime>2024-05-16 13:31:47 UTC</createdTime>
 <ownerDesignName>data_scheme</ownerDesignName>
 <engineerTo>
 <item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
 </engineerTo>
-<referedAttribute>145BFCE9-E236-AC66-197F-E507B9855B49</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="user_password" id="5C1ABBD7-9DFC-8B38-CAB5-4B50D572EDDB">
+<createdBy>Rukin</createdBy>
+<createdTime>2024-05-16 13:32:07 UTC</createdTime>
+<ownerDesignName>data_scheme</ownerDesignName>
+<engineerTo>
+<item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="375724D3-5D3C-D548-DCCF-BA2693E6AD99" name="Model PK">
+<identifier id="B2DA9E54-5583-FE60-00E8-1F92ED6882B8" name="Server PK">
 <createdBy>Rukin</createdBy>
-<createdTime>2024-05-11 14:13:36 UTC</createdTime>
+<createdTime>2024-05-16 13:31:19 UTC</createdTime>
 <ownerDesignName>data_scheme</ownerDesignName>
 <engineerTo>
 <item key="4B704B68-836D-50B1-3F67-1330F6B88EA8" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>3C5F19E2-6452-A83E-7594-364D69F7E3F5</attributeRef>
+<attributeRef>145BFCE9-E236-AC66-197F-E507B9855B49</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

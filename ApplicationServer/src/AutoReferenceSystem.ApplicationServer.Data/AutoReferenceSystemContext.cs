@@ -44,6 +44,8 @@ namespace AutoReferenceSystem.ApplicationServer.Data
 
         public DbSet<Session> Sessions { get; set; }
 
+        public DbSet<Server> Servers { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
