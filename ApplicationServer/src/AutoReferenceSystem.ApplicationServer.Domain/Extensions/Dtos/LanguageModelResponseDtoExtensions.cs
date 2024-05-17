@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AutoReferenceSystem.ApplicationServer.Domain.Extensions.Dtos
 {
-    public static class LanguageModelResponseDtoToAbstractResultDto
+    public static class LanguageModelResponseDtoExtensions
     {
         public static AbstractResultDto ToAbstractResultDto(this LanguageModelResponseDto dto)
         {

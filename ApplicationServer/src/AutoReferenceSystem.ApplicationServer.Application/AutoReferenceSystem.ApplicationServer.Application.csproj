@@ -13,8 +13,8 @@
 
   <ItemGroup>
     <Folder Include="Referencing\Commands\" />
-    <Folder Include="Referencing\Queries\" />
     <Folder Include="Users\Commands\" />
+    <Folder Include="Users\Queries\" />
   </ItemGroup>
 
   <ItemGroup>

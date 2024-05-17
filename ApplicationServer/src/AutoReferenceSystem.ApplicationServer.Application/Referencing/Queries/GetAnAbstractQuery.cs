@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutoReferenceSystem.ApplicationServer.Application.Users.Queries
+namespace AutoReferenceSystem.ApplicationServer.Application.Referencing.Queries
 {
     public class GetAnAbstractQuery : IRequest<Result<AbstractResultDto>>
     {

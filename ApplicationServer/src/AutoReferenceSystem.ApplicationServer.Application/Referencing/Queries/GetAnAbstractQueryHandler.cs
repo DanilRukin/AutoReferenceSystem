@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace AutoReferenceSystem.ApplicationServer.Application.Users.Queries
+namespace AutoReferenceSystem.ApplicationServer.Application.Referencing.Queries
 {
     internal class GetAnAbstractQueryHandler : IRequestHandler<GetAnAbstractQuery, Result<AbstractResultDto>>
     {
@@ -31,7 +31,8 @@ namespace AutoReferenceSystem.ApplicationServer.Application.Users.Queries
             try
             {
                 var servers = await _context
-                    .Servers.Join(_context.Models, s => s.Id, m => m.ServerId, (s, m) => s)
+                    .Servers
+                    .Join(_context.Models, s => s.Id, m => m.ServerId, (s, m) => s)
                     .ToListAsync(cancellationToken);
                 if (servers.Count == 0)
                     return Result<AbstractResultDto>.Error($"Нет сервера, на котором развернута модель " +
