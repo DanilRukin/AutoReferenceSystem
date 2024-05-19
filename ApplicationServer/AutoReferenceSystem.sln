@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReferenceSystem.ApplicationServer.SharedKernel", "src\AutoReferenceSystem.ApplicationServer.SharedKernel\AutoReferenceSystem.ApplicationServer.SharedKernel.csproj", "{F423B4CA-DD40-44F0-B39A-36DC702738FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReferenceSystem.ApplicationServer.SharedKernel", "src\AutoReferenceSystem.ApplicationServer.SharedKernel\AutoReferenceSystem.ApplicationServer.SharedKernel.csproj", "{F423B4CA-DD40-44F0-B39A-36DC702738FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReferenceSystem.ApplicationServer.Server", "src\AutoReferenceSystem.ApplicationServer.Server\AutoReferenceSystem.ApplicationServer.Server.csproj", "{18FD1190-9956-43CF-B7E0-0FC8296A3F7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReferenceSystem.ApplicationServer.Server", "src\AutoReferenceSystem.ApplicationServer.Server\AutoReferenceSystem.ApplicationServer.Server.csproj", "{18FD1190-9956-43CF-B7E0-0FC8296A3F7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReferenceSystem.ApplicationServer.Application", "src\AutoReferenceSystem.ApplicationServer.Application\AutoReferenceSystem.ApplicationServer.Application.csproj", "{B33E449D-6E50-4DE1-B1B6-BAABAD4AF8F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReferenceSystem.ApplicationServer.Application", "src\AutoReferenceSystem.ApplicationServer.Application\AutoReferenceSystem.ApplicationServer.Application.csproj", "{B33E449D-6E50-4DE1-B1B6-BAABAD4AF8F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReferenceSystem.ApplicationServer.Data", "src\AutoReferenceSystem.ApplicationServer.Data\AutoReferenceSystem.ApplicationServer.Data.csproj", "{0466C0DB-D0B5-42B3-8D6C-9AEA2A3BC8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReferenceSystem.ApplicationServer.Data", "src\AutoReferenceSystem.ApplicationServer.Data\AutoReferenceSystem.ApplicationServer.Data.csproj", "{0466C0DB-D0B5-42B3-8D6C-9AEA2A3BC8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReferenceSystem.ApplicationServer.Domain", "src\AutoReferenceSystem.ApplicationServer.Domain\AutoReferenceSystem.ApplicationServer.Domain.csproj", "{1AC728C8-8428-45AA-A3FE-37D24ECE4B3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReferenceSystem.ApplicationServer.Domain", "src\AutoReferenceSystem.ApplicationServer.Domain\AutoReferenceSystem.ApplicationServer.Domain.csproj", "{1AC728C8-8428-45AA-A3FE-37D24ECE4B3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReferenceSystem.WebClient", "..\WebClient\AutoReferenceSystem.WebClient\AutoReferenceSystem.WebClient.csproj", "{DD528644-2E0D-4310-9FC4-BB6B2612D8A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{1AC728C8-8428-45AA-A3FE-37D24ECE4B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AC728C8-8428-45AA-A3FE-37D24ECE4B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AC728C8-8428-45AA-A3FE-37D24ECE4B3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD528644-2E0D-4310-9FC4-BB6B2612D8A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD528644-2E0D-4310-9FC4-BB6B2612D8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD528644-2E0D-4310-9FC4-BB6B2612D8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD528644-2E0D-4310-9FC4-BB6B2612D8A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

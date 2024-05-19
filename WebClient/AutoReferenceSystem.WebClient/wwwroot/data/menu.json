@@ -1,0 +1,44 @@
+[
+  {
+    "path": "/",
+    "name": "Реферирование",
+    "key": "referencing",
+    "icon": "read"
+  },
+  {
+    "path": "/statistics",
+    "name": "Статистика",
+    "key": "statistics",
+    "icon": "dashboard",
+    "children": [
+      {
+        "path": "/statistics/common",
+        "name": "Общая",
+        "key": "statistics.common"
+      },
+      {
+        "path": "/statistics/by_user",
+        "name": "По пользователям",
+        "key": "statistics.by_user"
+      }
+    ]
+  },
+  {
+    "path": "/admin",
+    "name": "Администрирование",
+    "key": "admin",
+    "icon": "tool",
+    "children": [
+      {
+        "path": "/admin/user_management",
+        "name": "Управление пользователями",
+        "key": "admin.user_management"
+      },
+      {
+        "path": "/admin/model_management",
+        "name": "Управление моделями",
+        "key": "admin.model_management"
+      }
+    ]
+  }
+]

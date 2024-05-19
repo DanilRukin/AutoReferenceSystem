@@ -1,0 +1,91 @@
+﻿@namespace AutoReferenceSystem.WebClient
+@inherits LayoutComponentBase
+
+<AntDesign.ProLayout.BasicLayout 
+    Logo="@("https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg")"
+    MenuData="_menuData">
+    <RightContentRender>
+    </RightContentRender>
+    <ChildContent>
+        @Body
+    </ChildContent>
+    <FooterRender>
+        <FooterView Copyright="2024 RukinStudio" Links="Links"></FooterView>
+    </FooterRender>
+</AntDesign.ProLayout.BasicLayout>
+<SettingDrawer />
+
+@code
+{
+    [Inject] 
+    public HttpClient HttpClient { get; set; }
+
+    private MenuDataItem[] _menuData = new MenuDataItem[]
+    {
+        new MenuDataItem
+        {
+            Path = "/",
+            Name = "Реферирование",
+            Key = "referencing",
+            Icon = "read"
+        },
+        new MenuDataItem
+        {
+            Path = "/statistics",
+            Name = "Статистика",
+            Key = "statistics",
+            Icon = "dashboard",
+            Children = new MenuDataItem[]
+            {
+                new MenuDataItem
+                {
+                    Path = "/statistics/common",
+                    Name = "Общая",
+                    Key = "statistics.common"
+                },
+                new MenuDataItem
+                {
+                    Path = "/statistics/by_user",
+                    Name = "По пользователям",
+                    Key = "statistics.by_user"
+                },
+            }
+        },
+        new MenuDataItem
+        {
+            Path = "/admin",
+            Name = "Администрирование",
+            Key = "admin",
+            Icon = "tool",
+            Children = new MenuDataItem[]
+            {
+                new MenuDataItem
+                {
+                    Path = "/admin/user_management",
+                    Name = "Управление пользователями",
+                    Key = "admin.user_management"
+                },
+                new MenuDataItem
+                {
+                    Path = "/admin/model_management",
+                    Name = "Управление моделями",
+                    Key = "admin.model_management"
+                },
+            }
+        }
+    };
+
+    
+
+
+    public LinkItem[] Links { get; set; } =
+    {
+        new LinkItem
+        {
+            Key = "github",
+            Title = (RenderFragment)(@<Icon Type="github" />),
+            Href = "https://github.com/DanilRukin/AutoReferenceSystem",
+            BlankTarget = true,
+        }        
+    };
+}

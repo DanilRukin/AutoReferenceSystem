@@ -1,0 +1,118 @@
+﻿@page "/"
+@using AutoReferenceSystem.WebClient.Models
+
+<PageContainer Title="Реферирование">
+    <Breadcrumb>
+        <Breadcrumb>
+            <BreadcrumbItem>Реферирование</BreadcrumbItem>
+        </Breadcrumb>
+    </Breadcrumb>
+    <Content>
+        <span>Здесь вы можете получить пересказ исходного текста, выбрав все необходимые опции.</span>
+    </Content>
+    <ChildContent>
+        <Card>
+            <Title Level="3">Введите ваш текст для реферирования</Title>
+            <TextArea Placeholder="Ваш текст..." MinRows="10" AutoSize="true" />
+            <Divider />
+            <br/>
+            <br/>
+            <Title Level="3">Выберите или перетащите файлы</Title>
+            <Upload Action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    Name="files"
+                    Drag
+                    Multiple
+                     OnSingleCompleted="OnSingleCompleted">
+                 <p class="ant-upload-drag-icon">
+                     <Icon Type="inbox" />
+                 </p>
+                 <p class="ant-upload-text">Кликните или перетащите необходимые файлы для загрузки</p>
+                 <p class="ant-upload-hint">
+                     Поддерживаются форматы файлов: *.pdf, *.docx
+                 </p>
+             </Upload>
+             <Divider />
+             <br />
+             <br />
+             <Card Title="Настройки реферирования">
+                 <CardTabs>
+                     <Tabs Type="@TabType.Card">
+                         <TabPane Key="1" Tab="По типу решаемой задачи">
+                             <Title Level="3">Решаемая задача</Title>
+                             <div>
+                                 <RadioGroup @bind-Value="@ProblemType" Name="@nameof(ProblemType)">
+                                     <Radio Style="@_style" Value="ProblemType.HighlightTheMainTheses">Выделить основные тезисы</Radio>
+                                     <p class="fs-6">Будет построен список, содержащий самую важную информацию из всего текста</p>
+                                     <Radio Style="@_style" Value="ProblemType.BuildReferencing">Построить полносвязный реферат</Radio>
+                                     <p class="fs-6">Из исходного текста будет выделена основная информация и представлена в виде понятного, стилистически верного текста</p>
+                                 </RadioGroup>
+                             </div>
+                             <Divider />
+                             <br/>
+                             <br/>                             
+                             <Title Level="3">Объем реферата</Title>
+                             <div>
+                                 <RadioGroup @bind-Value="@AbstractVolume" Name="@nameof(AbstractVolume)">
+                                     <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
+                                         <Radio Style="@_style" Value="AbstractVolume.Relative">
+                                             <Text>Относительный объем реферата</Text>
+                                             <AntDesign.InputNumber Formatter="Format" Parser="Parse" DefaultValue="100d" Min="0" Max="100" />
+                                         </Radio>
+                                         <Radio Value="AbstractVolume.Absolute">
+                                             <div>
+                                                 <GridRow>
+                                                     <Text>Абсолютный объем реферата</Text>
+                                                 </GridRow>
+                                                 <GridRow>
+                                                     <GridCol Span="6"/>
+                                                     <GridCol>
+                                                         <RadioGroup @bind-Value="@Measure" Name="@nameof(RelativeAbstractVolumeMeasure)">
+                                                             <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
+                                                                 <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.WordsCount">
+                                                                     <Text>Количество слов</Text>
+                                                                     <AntDesign.InputNumber Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
+                                                                 </Radio>
+                                                                 <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.SentenciesCount">
+                                                                     <Text>Количество предложений</Text>
+                                                                     <AntDesign.InputNumber Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
+                                                                 </Radio>
+                                                             </Space>
+                                                         </RadioGroup>
+                                                     </GridCol>                                                    
+                                                 </GridRow>
+                                             </div>
+                                         </Radio>
+                                     </Space>
+                                 </RadioGroup>
+                             </div>
+                             <div style="display:flex;gap:3em;margin-top:1em">
+                                 <p class="mr-3">Используемая модель</p>
+                                 <Select DataSource="@Models" DropdownMaxWidth="200px"
+                                         @bind-Value="@SelectedModelId"
+                                         LabelName="@nameof(LanguageModel.Name)"
+                                         ValueName="@nameof(LanguageModel.Id)"
+                                         Placeholder="Модель"
+                                         AllowClear
+                                         Style="width:200px">
+                                </Select>
+                             </div>
+                         </TabPane>
+                         <TabPane Key="2" Tab="Пользовательские">
+                             <p>Content of Tab Pane 2</p>
+                             <p>Content of Tab Pane 2</p>
+                             <p>Content of Tab Pane 2</p>
+                         </TabPane>
+                     </Tabs>
+                 </CardTabs>
+             </Card>
+             <Button Type="@ButtonType.Primary" 
+                Icon="@IconType.Outline.Read"
+                Size="@ButtonSize.Large"
+                Shape="@ButtonShape.Round"
+                Style="text-align:right;margin-top:1em">
+                Реферировать
+            </Button>
+        </Card>
+    </ChildContent>
+</PageContainer>
+
