@@ -13,7 +13,7 @@
     <ChildContent>
         <Card>
             <Title Level="3">Введите ваш текст для реферирования</Title>
-            <TextArea Placeholder="Ваш текст..." MinRows="10" AutoSize="true" />
+            <TextArea @bind-Value="@SourceText" Placeholder="Ваш текст..." MinRows="10" AutoSize="true" />
             <Divider />
             <br/>
             <br/>
@@ -36,7 +36,7 @@
              <br />
              <Card Title="Настройки реферирования">
                  <CardTabs>
-                     <Tabs Type="@TabType.Card">
+                     <Tabs Type="@TabType.Card" ActiveKey="@ActiveTabKey">
                          <TabPane Key="1" Tab="По типу решаемой задачи">
                              <Title Level="3">Решаемая задача</Title>
                              <div>
@@ -56,7 +56,7 @@
                                      <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
                                          <Radio Style="@_style" Value="AbstractVolume.Relative">
                                              <Text>Относительный объем реферата</Text>
-                                             <AntDesign.InputNumber Formatter="Format" Parser="Parse" DefaultValue="100d" Min="0" Max="100" />
+                                             <AntDesign.InputNumber @bind-Value="AbstractRelativeVolume" Formatter="Format" Parser="Parse" DefaultValue="100d" Min="0" Max="100" />
                                          </Radio>
                                          <Radio Value="AbstractVolume.Absolute">
                                              <div>
@@ -70,11 +70,11 @@
                                                              <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
                                                                  <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.WordsCount">
                                                                      <Text>Количество слов</Text>
-                                                                     <AntDesign.InputNumber Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
+                                                                     <AntDesign.InputNumber @bind-Value="WordsCount" Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
                                                                  </Radio>
                                                                  <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.SentenciesCount">
                                                                      <Text>Количество предложений</Text>
-                                                                     <AntDesign.InputNumber Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
+                                                                     <AntDesign.InputNumber @bind-Value="SentenciesCount" Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
                                                                  </Radio>
                                                              </Space>
                                                          </RadioGroup>
@@ -98,9 +98,86 @@
                              </div>
                          </TabPane>
                          <TabPane Key="2" Tab="Пользовательские">
-                             <p>Content of Tab Pane 2</p>
-                             <p>Content of Tab Pane 2</p>
-                             <p>Content of Tab Pane 2</p>
+                             <GridRow>
+                                 <GridCol Span="12">
+                                     <Title Level="3">Метод реферирования</Title>
+                                     <RadioGroup @bind-Value="@AbstractionMethod" Name="@nameof(AbstractionMethod)">
+                                         <Space Direction="DirectionVHType.Vertical">
+                                             <Radio Value="AbstractionMethod.Extraction">Экстракция</Radio>
+                                             <Radio Value="AbstractionMethod.Abstraction">Абстракция</Radio>
+                                         </Space>
+                                     </RadioGroup>
+                                 </GridCol>
+                                 <GridCol Span="12">
+                                     <Title Level="3">Получаемый результат</Title>
+                                     <RadioGroup @bind-Value="@ExpectedResult" Name="@nameof(ExpectedResult)">
+                                         <Space Direction="DirectionVHType.Vertical">
+                                             <Radio Value="ExpectedResult.ListOfAbstracts">Список тезисов</Radio>
+                                             <Radio Value="ExpectedResult.Text">Текст</Radio>
+                                         </Space>
+                                     </RadioGroup>
+                                 </GridCol>
+                             </GridRow>
+                             <Divider />
+                             <br />
+                             <br />
+                             <Title Level="3">Объем реферата</Title>
+                            @if (ExpectedResult == ExpectedResult.Text)
+                            {
+                                <div>
+                                    <RadioGroup @bind-Value="@AbstractVolume" Name="@nameof(AbstractVolume)">
+                                        <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
+                                            <Radio Style="@_style" Value="AbstractVolume.Relative">
+                                                <Text>Относительный объем реферата</Text>
+                                                <AntDesign.InputNumber Formatter="Format" Parser="Parse" DefaultValue="100d" Min="0" Max="100" />
+                                            </Radio>
+                                            <Radio Value="AbstractVolume.Absolute">
+                                                <div>
+                                                    <GridRow>
+                                                        <Text>Абсолютный объем реферата</Text>
+                                                    </GridRow>
+                                                    <GridRow>
+                                                        <GridCol Span="6" />
+                                                        <GridCol>
+                                                            <RadioGroup @bind-Value="@Measure" Name="@nameof(RelativeAbstractVolumeMeasure)">
+                                                                <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
+                                                                    <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.WordsCount">
+                                                                        <Text>Количество слов</Text>
+                                                                        <AntDesign.InputNumber Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
+                                                                    </Radio>
+                                                                    <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.SentenciesCount">
+                                                                        <Text>Количество предложений</Text>
+                                                                        <AntDesign.InputNumber Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
+                                                                    </Radio>
+                                                                </Space>
+                                                            </RadioGroup>
+                                                        </GridCol>
+                                                    </GridRow>
+                                                </div>
+                                            </Radio>
+                                        </Space>
+                                    </RadioGroup>
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div style="display:flex;gap:3em;margin-top:1em">
+                                    <p class="mr-3">Количество тезисов</p>
+                                    <AntDesign.InputNumber Min="1" DefaultValue="7" PlaceHolder="Кол-во тезисов"></AntDesign.InputNumber>
+                                 </div>
+                            }
+                            <div style="display:flex;gap:3em;margin-top:1em">
+                                 <p class="mr-3">Используемая модель</p>
+                                 <Select DataSource="@Models" DropdownMaxWidth="200px"
+                                         @bind-Value="@SelectedModelId"
+                                         LabelName="@nameof(LanguageModel.Name)"
+                                         ValueName="@nameof(LanguageModel.Id)"
+                                         Placeholder="Модель"
+                                                AllowClear
+                                         Style="width:200px">
+                                 </Select>
+                             </div>
                          </TabPane>
                      </Tabs>
                  </CardTabs>
@@ -109,9 +186,33 @@
                 Icon="@IconType.Outline.Read"
                 Size="@ButtonSize.Large"
                 Shape="@ButtonShape.Round"
-                Style="text-align:right;margin-top:1em">
+                Style="text-align:right;margin-top:1em"
+                OnClick="OnReferencingButtonClick">
                 Реферировать
             </Button>
+            <Divider/>
+            <br/>
+            <br/>
+            <Title Level="3">Результат</Title>
+             <TextArea @bind-Value="@SourceText" Placeholder="Здесь будет текст полученного реферата..." MinRows="10" AutoSize="false" />
+             <div style="display:flex;gap:3em;margin-top:1em">
+                 <p class="mr-3">Формат сохраняемого файла</p>
+                 <Select DataSource="@FileSaveFormats" DropdownMaxWidth="200px"
+                         @bind-Value="@SelectedFileFormatId"
+                         LabelName="@nameof(FileFormat.Name)"
+                         ValueName="@nameof(FileFormat.Id)"
+                         Placeholder="Формат"
+                         AllowClear
+                         Style="width:200px">
+                 </Select>
+                 <Button Type="@ButtonType.Primary"
+                         Icon="@IconType.Outline.Save"
+                         Size="@ButtonSize.Large"
+                         Shape="@ButtonShape.Round"
+                         >
+                     Сохранить
+                 </Button>
+             </div>
         </Card>
     </ChildContent>
 </PageContainer>
