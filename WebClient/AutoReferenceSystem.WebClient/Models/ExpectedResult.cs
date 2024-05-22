@@ -2,6 +2,6 @@
 {
     public enum ExpectedResult
     {
-        ListOfAbstracts, Text
+        None, ListOfAbstracts, Text
     }
 }

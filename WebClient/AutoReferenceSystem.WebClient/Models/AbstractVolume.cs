@@ -2,6 +2,6 @@
 {
     public enum AbstractVolume
     {
-        Absolute, Relative
+        None, Absolute, Relative
     }
 }

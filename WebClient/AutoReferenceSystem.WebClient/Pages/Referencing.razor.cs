@@ -1,5 +1,8 @@
 ﻿using AntDesign;
+using AutoReferenceSystem.WebClient.Logic.Extensions;
+using AutoReferenceSystem.WebClient.Logic.Referencing.Queries;
 using AutoReferenceSystem.WebClient.Models;
+using MediatR;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -9,36 +12,17 @@ namespace AutoReferenceSystem.WebClient.Pages
 {
     public partial class Referencing
     {
+        private string _style = "line-height:50px";
+
         [Inject]
         protected INotificationService NotificationService { get; set; }
 
-        public ProblemType ProblemType { get; set; } = ProblemType.HighlightTheMainTheses;
+        [Inject]
+        protected IMediator Mediator { get; set; }
 
-        public RelativeAbstractVolumeMeasure Measure { get; set; } = RelativeAbstractVolumeMeasure.WordsCount;
-
-        public AbstractVolume AbstractVolume { get; set; } = AbstractVolume.Relative;
-
-        public AbstractionMethod AbstractionMethod { get; set; } = AbstractionMethod.Extraction;
-
-        public ExpectedResult ExpectedResult { get; set; } = ExpectedResult.ListOfAbstracts;
-
-        public int? AbstractsCount { get; set; }
-        public int? WordsCount { get; set; }
-        public int? SentenciesCount { get; set; }
-        public double AbstractRelativeVolume { get; set; }
-
-        public string SourceText { get; set; } = string.Empty;
-        public string ResultText { get; set; } = string.Empty;
+        public ReferencingModel Model { get; set; }
 
         public string ActiveTabKey { get; set; } = "1";
-
-        private List<FileFormat> FileSaveFormats { get; set; } = new List<FileFormat>
-        { 
-            new() { Id = 1, Name = "pdf" },
-            new() { Id = 2, Name = "docx" }
-        };
-
-        private int? SelectedFileFormatId { get; set; }
 
         private void OnSingleCompleted(UploadInfo fileinfo)
         {
@@ -59,130 +43,45 @@ namespace AutoReferenceSystem.WebClient.Pages
             return value.Replace("%", "");
         }
 
-
-        private List<LanguageModel> Models { get; set; } = new List<LanguageModel>() 
-        { 
-            new() { Id = 1, Name = "BERT" },
-            new() { Id = 2, Name = "BART" },
-            new() { Id = 3, Name = "Llama" }
-        };
-
-        private int? SelectedModelId { get; set; }
-
-        private string _style = "line-height:50px";
-
-        private async Task OnReferencingButtonClick()
+        protected override void OnInitialized()
         {
-            if (string.IsNullOrWhiteSpace(SourceText))
-            {
-                await ShowWarning("Введите хоть какой-нибудь текст или прикрепите файл!");
-                return;
-            }
-            if (SelectedModelId is null)
-            {
-                await ShowWarning("Выберите модель");
-                return;
-            }
-            if (ActiveTabKey == "1") // По типу решаемой задачи
-            {
-                if (ProblemType == ProblemType.HighlightTheMainTheses) // выделить основные тезисы
-                {
-                    if (AbstractsCount == null || AbstractsCount < 1)
-                    {
-                        await ShowWarning("Должно быть задано количество тезисов");
-                        return;
-                    }
-                    // TODO: Выделяем основные тезисы
-                    AbstractionMethod = AbstractionMethod.Extraction;
-                }
-                else if (ProblemType == ProblemType.BuildReferencing) // Построить полносвязный пересказ
-                {
-                    // Установить по-дефолту метод реферирования
-                    AbstractionMethod = AbstractionMethod.Abstraction;
-                    await GetAnAbstractWithCurrentUserReferencingSettings();
-                }
-                else
-                {
-                    await ShowError("Не выбрана решаемая проблема");
-                    return;
-                }
-            }
-            else if (ActiveTabKey == "2") // Пользовательские
-            {
-                if (AbstractionMethod == AbstractionMethod.Extraction) // экстракция
-                {
-                    // TODO: отфильтровать модели, которые можно использовать. Использовать установленный пользователем метод реферирования
-                    await GetAnAbstractWithCurrentUserReferencingSettings();
-                }
-                else if (AbstractionMethod == AbstractionMethod.Abstraction) // Абстракция
-                {
-                    // TODO: отфильтровать модели, которые можно использовать. Использовать установленный пользователем метод реферирования
-                    await GetAnAbstractWithCurrentUserReferencingSettings();
-                }
-                else
-                {
-                    await ShowError("Не выбран метод реферирования");
-                    return;
-                }
-            }
-            else
-            {
-                await ShowError("Не заданы настройки реферирования");
-            }
+            base.OnInitialized();
+            Model = new ReferencingModel();
         }
 
-        private async Task GetAnAbstractWithCurrentUserReferencingSettings()
-        {
-            if (AbstractVolume == AbstractVolume.Relative)
+
+        private async Task OnReferencingButtonClick()
+        {          
+            if (ActiveTabKey == "1") // По типу решаемой задачи
             {
-                if (AbstractRelativeVolume < 1)
-                {
-                    await ShowWarning("Должно быть задано процентное соотношение объема получаемого текста к объему исходного");
-                    return;
-                }
-                // TODO: Строим полносвязный реферат (относительный объем)
+                // Установим значения настроек по-умолчанию
+                Model.SelectedModelId = 1;
+                Model.AbstractionMethod = AbstractionMethod.Extraction;
+                Model.AbstractVolume = AbstractVolume.Absolute;
+                Model.Measure = AbsoluteAbstractVolumeMeasure.SentenciesCount;
             }
-            else if (AbstractVolume == AbstractVolume.Absolute)
+            GetAnAbstractQuery query = new(Model.SourceText, (int)Model.SelectedModelId, Model.AbstractionMethod,
+                    Model.AbstractVolume, Model.Measure, (int)Model.WordsCount, (int)Model.SentenciesCount, Model.AbstractRelativeVolume);
+            var result = await Mediator.Send(query);
+            if (!result.IsSuccess)
             {
-                if (Measure == RelativeAbstractVolumeMeasure.WordsCount)
-                {
-                    if (WordsCount == null || WordsCount < 1)
-                    {
-                        await ShowWarning("Должно быть задано количество слов");
-                        return;
-                    }
-                    // TODO: Строим полносвязный реферат (абсолютный объем в словах)
-                }
-                else if (Measure == RelativeAbstractVolumeMeasure.SentenciesCount)
-                {
-                    if (SentenciesCount == null || SentenciesCount < 1)
-                    {
-                        await ShowWarning("Должно быть задано количество предложений");
-                        return;
-                    }
-                    // TODO: Строим полносвязный реферат (абсолютный объем в предложениях)
-                }
-                else
-                {
-                    await ShowError("Не выбрана мера абсолютного объема реферата");
-                    return;
-                }
+                ShowWarning(result.Errors.AsOneString());
             }
             else
             {
-                await ShowError("Не выбрана мера реферата");
-                return;
-            }
+                ShowSuccess("Реферат успешно сформирован");
+                Model.ResultText = result.Value.Text;
+            }               
         }
 
         private async Task OnSaveButtonClick()
         {
-            if (string.IsNullOrWhiteSpace(ResultText))
+            if (string.IsNullOrWhiteSpace(Model.ResultText))
             {
                 await ShowWarning("Для сохранения файла необходимо, чтобы был получен пересказ");
                 return;
             }
-            if (SelectedFileFormatId == null)
+            if (Model.SelectedFileFormatId == null)
             {
                 await ShowWarning("Не выбран формат сохранения файла");
                 return;

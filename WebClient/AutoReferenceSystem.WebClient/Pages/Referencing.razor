@@ -13,7 +13,7 @@
     <ChildContent>
         <Card>
             <Title Level="3">Введите ваш текст для реферирования</Title>
-            <TextArea @bind-Value="@SourceText" Placeholder="Ваш текст..." MinRows="10" AutoSize="true" />
+            <TextArea @bind-Value="@Model.SourceText" Placeholder="Ваш текст..." MinRows="10" AutoSize="true" />
             <Divider />
             <br/>
             <br/>
@@ -40,7 +40,7 @@
                          <TabPane Key="1" Tab="По типу решаемой задачи">
                              <Title Level="3">Решаемая задача</Title>
                              <div>
-                                 <RadioGroup @bind-Value="@ProblemType" Name="@nameof(ProblemType)">
+                                 <RadioGroup @bind-Value="@Model.ProblemType" Name="@nameof(ProblemType)">
                                      <Radio Style="@_style" Value="ProblemType.HighlightTheMainTheses">Выделить основные тезисы</Radio>
                                      <p class="fs-6">Будет построен список, содержащий самую важную информацию из всего текста</p>
                                      <Radio Style="@_style" Value="ProblemType.BuildReferencing">Построить полносвязный реферат</Radio>
@@ -52,11 +52,11 @@
                              <br/>                             
                              <Title Level="3">Объем реферата</Title>
                              <div>
-                                 <RadioGroup @bind-Value="@AbstractVolume" Name="@nameof(AbstractVolume)">
+                                 <RadioGroup @bind-Value="@Model.AbstractVolume" Name="@nameof(AbstractVolume)">
                                      <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
                                          <Radio Style="@_style" Value="AbstractVolume.Relative">
                                              <Text>Относительный объем реферата</Text>
-                                             <AntDesign.InputNumber @bind-Value="AbstractRelativeVolume" Formatter="Format" Parser="Parse" DefaultValue="100d" Min="0" Max="100" />
+                                             <AntDesign.InputNumber @bind-Value="Model.AbstractRelativeVolume" Formatter="Format" Parser="Parse" DefaultValue="100d" Min="0" Max="100" />
                                          </Radio>
                                          <Radio Value="AbstractVolume.Absolute">
                                              <div>
@@ -66,15 +66,15 @@
                                                  <GridRow>
                                                      <GridCol Span="6"/>
                                                      <GridCol>
-                                                         <RadioGroup @bind-Value="@Measure" Name="@nameof(RelativeAbstractVolumeMeasure)">
+                                                         <RadioGroup @bind-Value="@Model.Measure" Name="@nameof(AbsoluteAbstractVolumeMeasure)">
                                                              <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
-                                                                 <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.WordsCount">
+                                                                 <Radio Style="@_style" Value="AbsoluteAbstractVolumeMeasure.WordsCount">
                                                                      <Text>Количество слов</Text>
-                                                                     <AntDesign.InputNumber @bind-Value="WordsCount" Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
+                                                                     <AntDesign.InputNumber @bind-Value="Model.WordsCount" Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
                                                                  </Radio>
-                                                                 <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.SentenciesCount">
+                                                                 <Radio Style="@_style" Value="AbsoluteAbstractVolumeMeasure.SentenciesCount">
                                                                      <Text>Количество предложений</Text>
-                                                                     <AntDesign.InputNumber @bind-Value="SentenciesCount" Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
+                                                                     <AntDesign.InputNumber @bind-Value="Model.SentenciesCount" Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
                                                                  </Radio>
                                                              </Space>
                                                          </RadioGroup>
@@ -87,8 +87,8 @@
                              </div>
                              <div style="display:flex;gap:3em;margin-top:1em">
                                  <p class="mr-3">Используемая модель</p>
-                                 <Select DataSource="@Models" DropdownMaxWidth="200px"
-                                         @bind-Value="@SelectedModelId"
+                                 <Select DataSource="@Model.Models" DropdownMaxWidth="200px"
+                                         @bind-Value="@Model.SelectedModelId"
                                          LabelName="@nameof(LanguageModel.Name)"
                                          ValueName="@nameof(LanguageModel.Id)"
                                          Placeholder="Модель"
@@ -101,7 +101,7 @@
                              <GridRow>
                                  <GridCol Span="12">
                                      <Title Level="3">Метод реферирования</Title>
-                                     <RadioGroup @bind-Value="@AbstractionMethod" Name="@nameof(AbstractionMethod)">
+                                     <RadioGroup @bind-Value="@Model.AbstractionMethod" Name="@nameof(AbstractionMethod)">
                                          <Space Direction="DirectionVHType.Vertical">
                                              <Radio Value="AbstractionMethod.Extraction">Экстракция</Radio>
                                              <Radio Value="AbstractionMethod.Abstraction">Абстракция</Radio>
@@ -110,7 +110,7 @@
                                  </GridCol>
                                  <GridCol Span="12">
                                      <Title Level="3">Получаемый результат</Title>
-                                     <RadioGroup @bind-Value="@ExpectedResult" Name="@nameof(ExpectedResult)">
+                                     <RadioGroup @bind-Value="@Model.ExpectedResult" Name="@nameof(ExpectedResult)">
                                          <Space Direction="DirectionVHType.Vertical">
                                              <Radio Value="ExpectedResult.ListOfAbstracts">Список тезисов</Radio>
                                              <Radio Value="ExpectedResult.Text">Текст</Radio>
@@ -122,10 +122,10 @@
                              <br />
                              <br />
                              <Title Level="3">Объем реферата</Title>
-                            @if (ExpectedResult == ExpectedResult.Text)
+                            @if (Model.ExpectedResult == ExpectedResult.Text)
                             {
                                 <div>
-                                    <RadioGroup @bind-Value="@AbstractVolume" Name="@nameof(AbstractVolume)">
+                                    <RadioGroup @bind-Value="@Model.AbstractVolume" Name="@nameof(AbstractVolume)">
                                         <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
                                             <Radio Style="@_style" Value="AbstractVolume.Relative">
                                                 <Text>Относительный объем реферата</Text>
@@ -139,13 +139,13 @@
                                                     <GridRow>
                                                         <GridCol Span="6" />
                                                         <GridCol>
-                                                            <RadioGroup @bind-Value="@Measure" Name="@nameof(RelativeAbstractVolumeMeasure)">
+                                                            <RadioGroup @bind-Value="@Model.Measure" Name="@nameof(AbsoluteAbstractVolumeMeasure)">
                                                                 <Space Direction="DirectionVHType.Vertical" Size="@AntSizeLDSType.Large">
-                                                                    <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.WordsCount">
+                                                                    <Radio Style="@_style" Value="AbsoluteAbstractVolumeMeasure.WordsCount">
                                                                         <Text>Количество слов</Text>
                                                                         <AntDesign.InputNumber Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
                                                                     </Radio>
-                                                                    <Radio Style="@_style" Value="RelativeAbstractVolumeMeasure.SentenciesCount">
+                                                                    <Radio Style="@_style" Value="AbsoluteAbstractVolumeMeasure.SentenciesCount">
                                                                         <Text>Количество предложений</Text>
                                                                         <AntDesign.InputNumber Min="1" Max="10" DefaultValue="3" PlaceHolder="Кол-во слов"></AntDesign.InputNumber>
                                                                     </Radio>
@@ -169,8 +169,8 @@
                             }
                             <div style="display:flex;gap:3em;margin-top:1em">
                                  <p class="mr-3">Используемая модель</p>
-                                 <Select DataSource="@Models" DropdownMaxWidth="200px"
-                                         @bind-Value="@SelectedModelId"
+                                 <Select DataSource="@Model.Models" DropdownMaxWidth="200px"
+                                         @bind-Value="@Model.SelectedModelId"
                                          LabelName="@nameof(LanguageModel.Name)"
                                          ValueName="@nameof(LanguageModel.Id)"
                                          Placeholder="Модель"
@@ -194,11 +194,11 @@
             <br/>
             <br/>
             <Title Level="3">Результат</Title>
-             <TextArea @bind-Value="@SourceText" Placeholder="Здесь будет текст полученного реферата..." MinRows="10" AutoSize="false" />
+             <TextArea @bind-Value="@Model.SourceText" Placeholder="Здесь будет текст полученного реферата..." MinRows="10" AutoSize="false" />
              <div style="display:flex;gap:3em;margin-top:1em">
                  <p class="mr-3">Формат сохраняемого файла</p>
-                 <Select DataSource="@FileSaveFormats" DropdownMaxWidth="200px"
-                         @bind-Value="@SelectedFileFormatId"
+                 <Select DataSource="@Model.FileSaveFormats" DropdownMaxWidth="200px"
+                         @bind-Value="@Model.SelectedFileFormatId"
                          LabelName="@nameof(FileFormat.Name)"
                          ValueName="@nameof(FileFormat.Id)"
                          Placeholder="Формат"
