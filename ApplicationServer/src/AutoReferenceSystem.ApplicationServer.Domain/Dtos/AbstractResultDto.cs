@@ -9,6 +9,6 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Dtos
     public class AbstractResultDto
     {
         public string Text { get; set; } = string.Empty;
-        public TimeSpan WorkingTime { get; set; }
+        public long WorkingTime { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Extensions.Dtos
             return new AbstractResultDto
             {
                 Text = dto.Abstract,
-                WorkingTime = dto.WorkingTime
+                WorkingTime = dto.SummaryMetrics.WorkingTime
             };
         }
     }

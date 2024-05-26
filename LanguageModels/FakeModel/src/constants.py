@@ -1,0 +1,4 @@
+# В этом классе содержатся общие константы
+
+CPU_MEMORY_TOTAL_BYTES = 45842554
+GPU_MEMORY_TOTAL_BYTES = 4315767614575451

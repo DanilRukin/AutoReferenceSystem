@@ -21,6 +21,7 @@ namespace AutoReferenceSystem.WebClient
             });
             builder.Services.AddAntDesign();
             builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));
+            builder.Services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
             await builder.Build().RunAsync();
         }
