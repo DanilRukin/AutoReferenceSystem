@@ -82,3 +82,8 @@ class LanguageModelResponse(BaseModel):
     """Тип устройства, на котором проиводились расчеты"""
 
 
+class RequestText(BaseModel):
+    """Текст для пересказа"""
+
+    SourceText: str
+    """Текст для пересказа"""
