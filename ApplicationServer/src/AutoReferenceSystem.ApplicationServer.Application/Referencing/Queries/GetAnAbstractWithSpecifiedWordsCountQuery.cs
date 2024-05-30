@@ -9,16 +9,21 @@ using System.Threading.Tasks;
 
 namespace AutoReferenceSystem.ApplicationServer.Application.Referencing.Queries
 {
-    public class GetAnAbstractQuery : IRequest<Result<AbstractResultDto>>
+    public class GetAnAbstractWithSpecifiedWordsCountQuery : IRequest<Result<LanguageModelResponseDto>>
     {
+        public int ModelId { get; private set; }
+
         public string SourceText { get; private set; }
-        public AbstractOptionsDto AbstractOptions { get; private set; }
+
+        public int WordsCount { get; private set; }
+
         public Guid UserId { get; private set; }
 
-        public GetAnAbstractQuery(string sourceText, AbstractOptionsDto abstractOptions, Guid userId)
+        public GetAnAbstractWithSpecifiedWordsCountQuery(int modelId, string sourceText, int wordsCount, Guid userId)
         {
+            ModelId = modelId;
             SourceText = sourceText ?? throw new ArgumentNullException(nameof(sourceText));
-            AbstractOptions = abstractOptions ?? throw new ArgumentNullException(nameof(abstractOptions));
+            WordsCount = wordsCount;
             UserId = userId;
         }
     }

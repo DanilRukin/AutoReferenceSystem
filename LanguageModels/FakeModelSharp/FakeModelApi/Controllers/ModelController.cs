@@ -27,7 +27,7 @@ namespace FakeModelApi.Controllers
         [HttpPut("abstract/with_theses/{count:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<LanguageModelResponse>> GetAnAbstractByThesesCount([FromRoute]int count, [FromBody]string requestText)
+        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByThesesCount([FromRoute]int count, [FromBody]string requestText)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace FakeModelApi.Controllers
         [HttpPut("abstract/by_abstract_relative_volume/{relativeVolume:double}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<LanguageModelResponse>> GetAnAbstractByAbstractRelativeVolume([FromRoute] double relativeVolume,
+        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByAbstractRelativeVolume([FromRoute] double relativeVolume,
             [FromBody] string requestText)
         {
             try
@@ -68,7 +68,7 @@ namespace FakeModelApi.Controllers
         [HttpPut("abstract/with_specified_words_count/{count:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<LanguageModelResponse>> GetAnAbstractWithSpecifiedWordsCount([FromRoute] int count,
+        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedWordsCount([FromRoute] int count,
             [FromBody] string requestText)
         {
             try
@@ -89,7 +89,7 @@ namespace FakeModelApi.Controllers
         [HttpPut("abstract/with_specified_sentesies_count/{count:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<LanguageModelResponse>> GetAnAbstractWithSpecifiedSentesiesCount([FromRoute] int count,
+        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedSentesiesCount([FromRoute] int count,
             [FromBody] string requestText)
         {
             try

@@ -3,7 +3,7 @@
     /// <summary>
     /// Ответ модели
     /// </summary>
-    public class LanguageModelResponse
+    public class LanguageModelResponseDto
     {
         /// <summary>
         /// Имя модели
@@ -17,7 +17,7 @@
         /// <summary>
         /// Общие метрики работы модели
         /// </summary>
-        public SummaryMetrics SummaryMetrics { get; set; } = new SummaryMetrics();
+        public SummaryMetricsDto SummaryMetrics { get; set; } = new SummaryMetricsDto();
 
         /// <summary>
         /// Признак успешной обработки
@@ -32,12 +32,12 @@
         /// <summary>
         /// Метрики видеокарты
         /// </summary>
-        public GpuMetrics GpuMetrics { get; set; } = new GpuMetrics();
+        public GpuMetricsDto GpuMetrics { get; set; } = new GpuMetricsDto();
 
         /// <summary>
         /// Метрики процессора
         /// </summary>
-        public CpuMetrics CpuMetrics { get; set; } = new CpuMetrics();
+        public CpuMetricsDto CpuMetrics { get; set; } = new CpuMetricsDto();
 
         /// <summary>
         /// Тип устройства, на котором проиводились расчеты

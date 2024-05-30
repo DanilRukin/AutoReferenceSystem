@@ -2,6 +2,6 @@
 {
     public enum AbstractionMethod
     {
-        None, Extraction, Abstraction
+        Unknown, Extraction, Abstraction
     }
 }

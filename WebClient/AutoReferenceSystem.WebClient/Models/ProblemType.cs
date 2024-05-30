@@ -2,6 +2,6 @@
 {
     public enum ProblemType
     {
-        None, HighlightTheMainTheses, BuildReferencing
+        Unknown, HighlightTheMainTheses, BuildReferencing
     }
 }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Метрики процессора
     /// </summary>
-    public class CpuMetrics
+    public class CpuMetricsDto
     {
         /// <summary>
         /// Загрузка ЦП [0.0 - 1.0]

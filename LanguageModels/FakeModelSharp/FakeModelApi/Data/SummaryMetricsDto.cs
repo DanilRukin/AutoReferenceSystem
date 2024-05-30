@@ -3,7 +3,7 @@
     /// <summary>
     /// Сводные метрики
     /// </summary>
-    public class SummaryMetrics
+    public class SummaryMetricsDto
     {
         /// <summary>
         /// Общее время обработки запроса (мс)

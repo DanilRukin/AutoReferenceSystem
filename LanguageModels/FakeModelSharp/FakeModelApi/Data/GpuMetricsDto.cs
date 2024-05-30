@@ -3,7 +3,7 @@
     /// <summary>
     /// Метрики GPU
     /// </summary>
-    public class GpuMetrics
+    public class GpuMetricsDto
     {
         /// <summary>
         /// Мощность (Вт)

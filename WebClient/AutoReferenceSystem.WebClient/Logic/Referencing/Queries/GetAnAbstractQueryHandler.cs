@@ -60,7 +60,7 @@ namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
             {
                 return Result.Error("Выберите метод реферирования");
             }
-            if (query.AbstractVolume == AbstractVolume.None)
+            if (query.AbstractVolume == AbstractVolume.Unknown)
             {
                 return Result.Error("Укажите тип объема получаемого текста");
             }

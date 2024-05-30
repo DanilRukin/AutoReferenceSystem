@@ -11,5 +11,7 @@ namespace AutoReferenceSystem.ApplicationServer.Application.LanguageModelsClient
     public interface ILanguageModelClient
     {
         Task<LanguageModelResponseDto?> GetAnAbstract(Server server, int modelId);
+
+        Task<LanguageModelResponseDto> GetAnAbstractByThesesCount(Server server, int modelId, string sourceText, int thesesCount);
     }
 }

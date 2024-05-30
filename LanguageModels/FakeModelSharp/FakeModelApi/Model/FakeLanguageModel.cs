@@ -27,7 +27,7 @@ namespace FakeModelApi.Model
         /// <param name="sourceText"></param>
         /// <param name="thesesCount"></param>
         /// <returns></returns>
-        public Task<LanguageModelResponse> GetAnAbstractByThesesCount(string sourceText, int thesesCount)
+        public Task<LanguageModelResponseDto> GetAnAbstractByThesesCount(string sourceText, int thesesCount)
         {
             // какая-то логика работы с языковой моделью
             return Task.Factory.StartNew(() =>
@@ -64,23 +64,23 @@ namespace FakeModelApi.Model
         /// <param name="abstract"></param>
         /// <param name="workingTime"></param>
         /// <returns></returns>
-        private LanguageModelResponse GetSuccessResponse(string @abstract, int workingTime)
+        private LanguageModelResponseDto GetSuccessResponse(string @abstract, int workingTime)
         {
             Random random = new Random();
-            return new LanguageModelResponse()
+            return new LanguageModelResponseDto()
             {
                 Abstract = @abstract,
                 ErrorText = "",
                 IsSuccess = true,
                 ModelName = this.ModelName,
                 DeviceType = this.DeviceType,
-                CpuMetrics = new CpuMetrics()
+                CpuMetrics = new CpuMetricsDto()
                 {
                     CpuMemoryTotalBytes = CPU_MEMORY_TOTAL_BYTES,
                     CpuMemoryUsedBytes = random.Next(1, (int)CPU_MEMORY_TOTAL_BYTES),
                     CpuUtilization = random.NextDouble()
                 },
-                GpuMetrics = new GpuMetrics()
+                GpuMetrics = new GpuMetricsDto()
                 {
                     EnergyConsumption = random.Next(1, 700),
                     GpuMemoryTotalBytes = GPU_MEMORY_TOTAL_BYTES,
@@ -88,7 +88,7 @@ namespace FakeModelApi.Model
                     GpuPower = random.Next(1, 100),
                     GpuUtilization = random.NextDouble()
                 },
-                SummaryMetrics = new SummaryMetrics()
+                SummaryMetrics = new SummaryMetricsDto()
                 {
                     ComputeInputTime = 0,
                     ComputeOutputTime = 0,
@@ -104,23 +104,23 @@ namespace FakeModelApi.Model
         /// <param name="workingTime"></param>
         /// <param name="errorText"></param>
         /// <returns></returns>
-        private LanguageModelResponse GetAnErrorResponse(int workingTime, string errorText)
+        private LanguageModelResponseDto GetAnErrorResponse(int workingTime, string errorText)
         {
             Random random = new Random();
-            var response = new LanguageModelResponse()
+            var response = new LanguageModelResponseDto()
             {
                 Abstract = "",
                 DeviceType = this.DeviceType,
                 ErrorText = errorText,
                 IsSuccess = false,
                 ModelName = this.ModelName,
-                CpuMetrics = new CpuMetrics()
+                CpuMetrics = new CpuMetricsDto()
                 {
                     CpuMemoryTotalBytes = CPU_MEMORY_TOTAL_BYTES,
                     CpuMemoryUsedBytes = random.Next(1, (int)CPU_MEMORY_TOTAL_BYTES),
                     CpuUtilization = random.NextDouble()
                 },               
-                GpuMetrics = new GpuMetrics()
+                GpuMetrics = new GpuMetricsDto()
                 {
                     EnergyConsumption = random.Next(1, 700),
                     GpuMemoryTotalBytes = GPU_MEMORY_TOTAL_BYTES,
@@ -128,7 +128,7 @@ namespace FakeModelApi.Model
                     GpuPower = random.Next(1, 100),
                     GpuUtilization = random.NextDouble()
                 },
-                SummaryMetrics = new SummaryMetrics()
+                SummaryMetrics = new SummaryMetricsDto()
                 {
                     ComputeInputTime = 0,
                     ComputeOutputTime = 0,
@@ -147,7 +147,7 @@ namespace FakeModelApi.Model
         /// <param name="sourceText"></param>
         /// <param name="abstract_relative_volume"></param>
         /// <returns></returns>
-        public Task<LanguageModelResponse> GetAnAbstractByAbstractRelativeVolume(string sourceText, double abstractRelativeVolume)
+        public Task<LanguageModelResponseDto> GetAnAbstractByAbstractRelativeVolume(string sourceText, double abstractRelativeVolume)
         {
             // какая-то логика работы с языковой моделью
             return Task.Factory.StartNew(() =>
@@ -182,7 +182,7 @@ namespace FakeModelApi.Model
         /// <param name="sourceText"></param>
         /// <param name="wordsCount"></param>
         /// <returns></returns>
-        public Task<LanguageModelResponse> GetAnAbstractWithSpecifiedWordsCount(string sourceText, int wordsCount)
+        public Task<LanguageModelResponseDto> GetAnAbstractWithSpecifiedWordsCount(string sourceText, int wordsCount)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -220,7 +220,7 @@ namespace FakeModelApi.Model
         /// <param name="sourceText"></param>
         /// <param name="sentensiesCount"></param>
         /// <returns></returns>
-        public Task<LanguageModelResponse> GetAnAbstractWithSpecifiedSentesiesCount(string sourceText, int sentensiesCount)
+        public Task<LanguageModelResponseDto> GetAnAbstractWithSpecifiedSentesiesCount(string sourceText, int sentensiesCount)
         {
             return Task.Factory.StartNew(() =>
             {
