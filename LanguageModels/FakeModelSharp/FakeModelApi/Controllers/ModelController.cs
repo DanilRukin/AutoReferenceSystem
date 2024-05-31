@@ -24,19 +24,36 @@ namespace FakeModelApi.Controllers
         public ActionResult HealthCheck() => Ok();
 
 
-        [HttpPut("abstract/with_theses/{count:int}")]
+        [HttpPut("abstract/with_theses/{count:int}/{abstractionMethod:string}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByThesesCount([FromRoute]int count, [FromBody]string requestText)
+        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByThesesCount(
+            [FromRoute]int count,
+            [FromRoute] string abstractionMethod,
+            [FromBody]string requestText)
         {
             try
             {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                var response = await _languageModel.GetAnAbstractByThesesCount(requestText, count);
-                stopwatch.Stop();
-                response.SummaryMetrics.RequestTime = (int)stopwatch.ElapsedMilliseconds;
-                return Ok(response);
+                if (Enum.TryParse(typeof(AbstractionMethod), abstractionMethod, true, out object? method))
+                {
+                    if (method != null)
+                    {
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        var response = await _languageModel.GetAnAbstractByThesesCount(requestText, count, (AbstractionMethod)method);
+                        stopwatch.Stop();
+                        response.SummaryMetrics.RequestTime = (int)stopwatch.ElapsedMilliseconds;
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        return BadRequest($"Невозможно преобразовать метод реферирования: {abstractionMethod}");
+                    }
+                }
+                else
+                {
+                    return BadRequest($"Невозможно преобразовать метод реферирования: {abstractionMethod}");
+                }
             }
             catch (Exception ex)
             {
@@ -44,20 +61,36 @@ namespace FakeModelApi.Controllers
             }           
         }
 
-        [HttpPut("abstract/by_abstract_relative_volume/{relativeVolume:double}")]
+        [HttpPut("abstract/by_abstract_relative_volume/{relativeVolume:double}/{abstractionMethod:string}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByAbstractRelativeVolume([FromRoute] double relativeVolume,
+        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByAbstractRelativeVolume(
+            [FromRoute] double relativeVolume,
+            [FromRoute] string abstractionMethod,
             [FromBody] string requestText)
         {
             try
             {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                var response = await _languageModel.GetAnAbstractByAbstractRelativeVolume(requestText, relativeVolume);
-                stopwatch.Stop();
-                response.SummaryMetrics.RequestTime = (int)stopwatch.ElapsedMilliseconds;
-                return Ok(response);
+                if (Enum.TryParse(typeof(AbstractionMethod), abstractionMethod, true, out object? method))
+                {
+                    if (method != null)
+                    {
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        var response = await _languageModel.GetAnAbstractByAbstractRelativeVolume(requestText, relativeVolume, (AbstractionMethod)method);
+                        stopwatch.Stop();
+                        response.SummaryMetrics.RequestTime = (int)stopwatch.ElapsedMilliseconds;
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        return BadRequest($"Невозможно преобразовать метод реферирования: {abstractionMethod}");
+                    }
+                }
+                else
+                {
+                    return BadRequest($"Невозможно преобразовать метод реферирования: {abstractionMethod}");
+                }                
             }
             catch (Exception ex)
             {
@@ -68,17 +101,33 @@ namespace FakeModelApi.Controllers
         [HttpPut("abstract/with_specified_words_count/{count:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedWordsCount([FromRoute] int count,
+        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedWordsCount(
+            [FromRoute] int count,
+            [FromRoute] string abstractionMethod,
             [FromBody] string requestText)
         {
             try
             {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                var response = await _languageModel.GetAnAbstractWithSpecifiedWordsCount(requestText, count);
-                stopwatch.Stop();
-                response.SummaryMetrics.RequestTime = (int)stopwatch.ElapsedMilliseconds;
-                return Ok(response);
+                if (Enum.TryParse(typeof(AbstractionMethod), abstractionMethod, true, out object? method))
+                {
+                    if (method != null)
+                    {
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        var response = await _languageModel.GetAnAbstractWithSpecifiedWordsCount(requestText, count, (AbstractionMethod)method);
+                        stopwatch.Stop();
+                        response.SummaryMetrics.RequestTime = (int)stopwatch.ElapsedMilliseconds;
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        return BadRequest($"Невозможно преобразовать метод реферирования: {abstractionMethod}");
+                    }
+                }
+                else
+                {
+                    return BadRequest($"Невозможно преобразовать метод реферирования: {abstractionMethod}");
+                }                
             }
             catch (Exception ex)
             {
@@ -89,17 +138,33 @@ namespace FakeModelApi.Controllers
         [HttpPut("abstract/with_specified_sentesies_count/{count:int}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedSentesiesCount([FromRoute] int count,
+        public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedSentesiesCount(
+            [FromRoute] int count,
+            [FromRoute] string abstractionMethod,
             [FromBody] string requestText)
         {
             try
             {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                var response = await _languageModel.GetAnAbstractWithSpecifiedSentesiesCount(requestText, count);
-                stopwatch.Stop();
-                response.SummaryMetrics.RequestTime = (int)stopwatch.ElapsedMilliseconds;
-                return Ok(response);
+                if (Enum.TryParse(typeof(AbstractionMethod), abstractionMethod, true, out object? method))
+                {
+                    if (method != null)
+                    {
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        var response = await _languageModel.GetAnAbstractWithSpecifiedSentesiesCount(requestText, count, (AbstractionMethod)method);
+                        stopwatch.Stop();
+                        response.SummaryMetrics.RequestTime = (int)stopwatch.ElapsedMilliseconds;
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        return BadRequest($"Невозможно преобразовать метод реферирования: {abstractionMethod}");
+                    }
+                }
+                else
+                {
+                    return BadRequest($"Невозможно преобразовать метод реферирования: {abstractionMethod}");
+                }
             }
             catch (Exception ex)
             {

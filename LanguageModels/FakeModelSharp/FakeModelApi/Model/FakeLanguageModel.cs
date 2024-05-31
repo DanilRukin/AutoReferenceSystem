@@ -27,7 +27,7 @@ namespace FakeModelApi.Model
         /// <param name="sourceText"></param>
         /// <param name="thesesCount"></param>
         /// <returns></returns>
-        public Task<LanguageModelResponseDto> GetAnAbstractByThesesCount(string sourceText, int thesesCount)
+        public Task<LanguageModelResponseDto> GetAnAbstractByThesesCount(string sourceText, int thesesCount, AbstractionMethod abstractionMethod)
         {
             // какая-то логика работы с языковой моделью
             return Task.Factory.StartNew(() =>
@@ -37,24 +37,30 @@ namespace FakeModelApi.Model
                 if (sourceText is null || sourceText.Length == 0)
                 {
                     stopwatch.Stop();
-                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, "Неверный текст");
+                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, "Неверный текст", abstractionMethod);
                     return response;
                 }
                 if (thesesCount < 1)
                 {
                     stopwatch.Stop();
-                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, $"Невозможно сгенерировать {thesesCount} утверждений!");
+                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, $"Невозможно сгенерировать {thesesCount} утверждений!", abstractionMethod);
                     return response;
                 }
                 string[] sentensies = sourceText.Split('.', StringSplitOptions.RemoveEmptyEntries);
                 if (sentensies == null || sentensies?.Length == 0)
                 {
                     stopwatch.Stop();
-                    var response = GetSuccessResponse(sourceText, (int)stopwatch.ElapsedMilliseconds);
+                    var response = GetSuccessResponse($"1. {sourceText}", (int)stopwatch.ElapsedMilliseconds, abstractionMethod);
                     return response;
                 }
                 stopwatch.Stop();
-                return GetSuccessResponse(sentensies[0], (int)stopwatch.ElapsedMilliseconds);
+                StringBuilder builder = new StringBuilder();
+                Random random = new Random();
+                for (int i = 0; i < sentensies.Length; i++)
+                {
+                    builder.Append($"{i + 1}. {sentensies[random.Next(0, sentensies.Length - 1)]}\r\n");
+                }
+                return GetSuccessResponse(builder.ToString(), (int)stopwatch.ElapsedMilliseconds, abstractionMethod);
             });            
         }
 
@@ -64,7 +70,7 @@ namespace FakeModelApi.Model
         /// <param name="abstract"></param>
         /// <param name="workingTime"></param>
         /// <returns></returns>
-        private LanguageModelResponseDto GetSuccessResponse(string @abstract, int workingTime)
+        private LanguageModelResponseDto GetSuccessResponse(string @abstract, int workingTime, AbstractionMethod abstractionMethod)
         {
             Random random = new Random();
             return new LanguageModelResponseDto()
@@ -74,6 +80,7 @@ namespace FakeModelApi.Model
                 IsSuccess = true,
                 ModelName = this.ModelName,
                 DeviceType = this.DeviceType,
+                UsedAbstractionMethod = abstractionMethod,
                 CpuMetrics = new CpuMetricsDto()
                 {
                     CpuMemoryTotalBytes = CPU_MEMORY_TOTAL_BYTES,
@@ -104,7 +111,7 @@ namespace FakeModelApi.Model
         /// <param name="workingTime"></param>
         /// <param name="errorText"></param>
         /// <returns></returns>
-        private LanguageModelResponseDto GetAnErrorResponse(int workingTime, string errorText)
+        private LanguageModelResponseDto GetAnErrorResponse(int workingTime, string errorText, AbstractionMethod abstractionMethod)
         {
             Random random = new Random();
             var response = new LanguageModelResponseDto()
@@ -114,6 +121,7 @@ namespace FakeModelApi.Model
                 ErrorText = errorText,
                 IsSuccess = false,
                 ModelName = this.ModelName,
+                UsedAbstractionMethod = abstractionMethod,
                 CpuMetrics = new CpuMetricsDto()
                 {
                     CpuMemoryTotalBytes = CPU_MEMORY_TOTAL_BYTES,
@@ -147,7 +155,7 @@ namespace FakeModelApi.Model
         /// <param name="sourceText"></param>
         /// <param name="abstract_relative_volume"></param>
         /// <returns></returns>
-        public Task<LanguageModelResponseDto> GetAnAbstractByAbstractRelativeVolume(string sourceText, double abstractRelativeVolume)
+        public Task<LanguageModelResponseDto> GetAnAbstractByAbstractRelativeVolume(string sourceText, double abstractRelativeVolume, AbstractionMethod abstractionMethod)
         {
             // какая-то логика работы с языковой моделью
             return Task.Factory.StartNew(() =>
@@ -157,14 +165,15 @@ namespace FakeModelApi.Model
                 if (sourceText is null || sourceText.Length == 0)
                 {
                     stopwatch.Stop();
-                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, "Неверный текст");
+                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, "Неверный текст", abstractionMethod);
                     return response;
                 }
                 if (abstractRelativeVolume < 0 || abstractRelativeVolume > 1)
                 {
                     stopwatch.Stop();
                     var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds,
-                        $"Неверная величина относительного объема текста: {abstractRelativeVolume * 100} %");
+                        $"Неверная величина относительного объема текста: {abstractRelativeVolume * 100} %",
+                        abstractionMethod);
                     return response;
                 }
                 int length = (int)(sourceText.Length * abstractRelativeVolume);
@@ -172,7 +181,7 @@ namespace FakeModelApi.Model
                     length = 1;
                 string @abstract = sourceText.Substring(0, length);
                 stopwatch.Stop();
-                return GetSuccessResponse(@abstract, (int)stopwatch.ElapsedMilliseconds);
+                return GetSuccessResponse(@abstract, (int)stopwatch.ElapsedMilliseconds, abstractionMethod);
             });
         }
 
@@ -182,7 +191,7 @@ namespace FakeModelApi.Model
         /// <param name="sourceText"></param>
         /// <param name="wordsCount"></param>
         /// <returns></returns>
-        public Task<LanguageModelResponseDto> GetAnAbstractWithSpecifiedWordsCount(string sourceText, int wordsCount)
+        public Task<LanguageModelResponseDto> GetAnAbstractWithSpecifiedWordsCount(string sourceText, int wordsCount, AbstractionMethod abstractionMethod)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -191,13 +200,13 @@ namespace FakeModelApi.Model
                 if (sourceText is null || sourceText.Length == 0)
                 {
                     stopwatch.Stop();
-                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, "Неверный текст");
+                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, "Неверный текст", abstractionMethod);
                     return response;
                 }
                 if (wordsCount < 1)
                 {
                     stopwatch.Stop();
-                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, $"Неверное кол-во слов: {wordsCount}");
+                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, $"Неверное кол-во слов: {wordsCount}", abstractionMethod);
                     return response;
                 }
                 string[] words = sourceText.Split(' ', StringSplitOptions.RemoveEmptyEntries);
@@ -209,7 +218,7 @@ namespace FakeModelApi.Model
                     @abstract.Append($"{words[random.Next(0, count - 1)]} ");
                 }
                 stopwatch.Stop();
-                return GetSuccessResponse(@abstract.ToString(), (int)stopwatch.ElapsedMilliseconds);
+                return GetSuccessResponse(@abstract.ToString(), (int)stopwatch.ElapsedMilliseconds, abstractionMethod);
             });
         }
 
@@ -220,7 +229,7 @@ namespace FakeModelApi.Model
         /// <param name="sourceText"></param>
         /// <param name="sentensiesCount"></param>
         /// <returns></returns>
-        public Task<LanguageModelResponseDto> GetAnAbstractWithSpecifiedSentesiesCount(string sourceText, int sentensiesCount)
+        public Task<LanguageModelResponseDto> GetAnAbstractWithSpecifiedSentesiesCount(string sourceText, int sentensiesCount, AbstractionMethod abstractionMethod)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -229,7 +238,7 @@ namespace FakeModelApi.Model
                 if (sourceText is null || sourceText.Length == 0)
                 {
                     stopwatch.Stop();
-                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, "Неверный текст");
+                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, "Неверный текст", abstractionMethod);
                     return response;
                 }
                 string[] sentensies = sourceText.Split('.', StringSplitOptions.RemoveEmptyEntries);
@@ -237,7 +246,7 @@ namespace FakeModelApi.Model
                 if (sentensiesCount < 1 || sentensiesCount > count)
                 {
                     stopwatch.Stop();
-                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, $"Неверное кол-во предложений: {sentensiesCount}");
+                    var response = GetAnErrorResponse((int)stopwatch.ElapsedMilliseconds, $"Неверное кол-во предложений: {sentensiesCount}", abstractionMethod);
                     return response;
                 }
                 StringBuilder @abstract = new StringBuilder();
@@ -247,7 +256,7 @@ namespace FakeModelApi.Model
                     @abstract.Append($"{sentensies[random.Next(0, count - 1)]} ");
                 }
                 stopwatch.Stop();
-                return GetSuccessResponse(@abstract.ToString(), (int)stopwatch.ElapsedMilliseconds);
+                return GetSuccessResponse(@abstract.ToString(), (int)stopwatch.ElapsedMilliseconds, abstractionMethod);
             });
         }         
     }
