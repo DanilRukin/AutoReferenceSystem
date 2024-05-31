@@ -7,7 +7,7 @@ using System;
 
 namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
 {
-    internal class GetAnAbstractQuery : IRequest<Result<AbstractResultDto>>
+    internal class GetAnAbstractQuery : IRequest<Result<LanguageModelResponseDto>>
     {
         public string SourceText { get; set; }
         public int ModelId { get; private set; }
@@ -24,8 +24,11 @@ namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
 
         public double PercentsOfAbstract { get; private set; }
 
+        public Guid UserId { get; private set; }
+
         public GetAnAbstractQuery(string sourceText, int modelId, AbstractionMethod abstractionMethod, AbstractVolume abstractVolume,
-            AbsoluteAbstractVolumeMeasure measure, int wordCount, int sentensiesCount, double percentsOfAbstract)
+            AbsoluteAbstractVolumeMeasure measure, int wordCount, int sentensiesCount, double percentsOfAbstract,
+            Guid userId)
         {
             SourceText = sourceText ?? throw new ArgumentNullException(nameof(sourceText));
             ModelId = modelId;
@@ -35,6 +38,7 @@ namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
             WordCount = wordCount;
             SentensiesCount = sentensiesCount;
             PercentsOfAbstract = percentsOfAbstract;
+            UserId = userId;
         }
     }
 }

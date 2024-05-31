@@ -1,4 +1,5 @@
 ﻿using AntDesign;
+using AutoReferenceSystem.ApplicationServer.Domain.Dtos;
 using AutoReferenceSystem.WebClient.Logic.Extensions;
 using AutoReferenceSystem.WebClient.Logic.Referencing.Queries;
 using AutoReferenceSystem.WebClient.Models;
@@ -56,12 +57,21 @@ namespace AutoReferenceSystem.WebClient.Pages
             {
                 // Установим значения настроек по-умолчанию
                 Model.SelectedModelId = 1;
-                Model.AbstractionMethod = AbstractionMethod.Extraction;
+                Model.AbstractionMethod = AbstractionMethod.Abstraction;
                 Model.AbstractVolume = AbstractVolume.Absolute;
-                Model.Measure = AbsoluteAbstractVolumeMeasure.SentenciesCount;
+                Model.Measure = AbsoluteAbstractVolumeMeasure.WordsCount;
             }
-            GetAnAbstractQuery query = new(Model.SourceText, (int)Model.SelectedModelId, Model.AbstractionMethod,
-                    Model.AbstractVolume, Model.Measure, (int)Model.WordsCount, (int)Model.SentenciesCount, Model.AbstractRelativeVolume);
+            GetAnAbstractQuery query = new(
+                Model.SourceText,
+                Model.SelectedModelId == null ? 0 : (int)Model.SelectedModelId,
+                Model.AbstractionMethod,
+                Model.AbstractVolume,
+                Model.Measure,
+                Model.WordsCount == null ? 0 : (int)Model.WordsCount,
+                Model.SentenciesCount == null ? 0 : (int)Model.SentenciesCount,
+                Model.AbstractRelativeVolume,
+                Guid.Empty // TODO: user!!!!
+                );
             var result = await Mediator.Send(query);
             if (!result.IsSuccess)
             {
@@ -70,7 +80,7 @@ namespace AutoReferenceSystem.WebClient.Pages
             else
             {
                 ShowSuccess("Реферат успешно сформирован");
-                Model.ResultText = result.Value.Text;
+                Model.ResultText = result.Value.Abstract;
             }               
         }
 

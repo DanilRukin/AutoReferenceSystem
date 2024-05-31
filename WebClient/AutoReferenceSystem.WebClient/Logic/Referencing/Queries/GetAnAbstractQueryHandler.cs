@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
 {
-    internal class GetAnAbstractQueryHandler : IRequestHandler<GetAnAbstractQuery, Result<AbstractResultDto>>
+    internal class GetAnAbstractQueryHandler : IRequestHandler<GetAnAbstractQuery, Result<LanguageModelResponseDto>>
     {
         private HttpClient _client;
 
@@ -22,27 +22,76 @@ namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
             _client = factory.CreateClient();
         }
 
-        public async Task<Result<AbstractResultDto>> Handle(GetAnAbstractQuery request, CancellationToken cancellationToken)
+        public async Task<Result<LanguageModelResponseDto>> Handle(GetAnAbstractQuery request, CancellationToken cancellationToken)
         {
             try
             {
                 Result validationResult = Validate(request);
                 if (validationResult.IsSuccess)
                 {
-                    string route = ApiHelper.Get.AnAbstract(request.ModelId);
-                    var result = await _client.GetFromJsonAsync<AbstractResultDto>(route, cancellationToken);
-                    if (result == null)
-                        return Result<AbstractResultDto>.Error("Не удалось получить ответ от сервера");
-                    return Result<AbstractResultDto>.Success(result);
+                    bool isServerAlive = _client
+                        .SendAsync(new HttpRequestMessage
+                        {
+                            Method = HttpMethod.Get,
+                            RequestUri = new Uri(ApiHelper.GetRouteForHealthCheck(), UriKind.Relative)
+                        })
+                        .Result
+                        .IsSuccessStatusCode;
+                    if (isServerAlive)
+                    {
+                        HttpRequestMessage message = new HttpRequestMessage()
+                        {
+                            Method = HttpMethod.Put,
+                            Content = JsonContent.Create(request.SourceText)
+                        };
+                        if (request.AbstractVolume == AbstractVolume.Absolute)
+                        {
+                            if (request.Measure == AbsoluteAbstractVolumeMeasure.WordsCount)
+                            {
+                                message.RequestUri = new Uri(ApiHelper
+                                    .GetRouteForAnAbstractWithSpecifiedWordsCount(
+                                        request.WordCount,
+                                        request.UserId,
+                                        request.ModelId), UriKind.Relative);
+                            }
+                            else if (request.Measure == AbsoluteAbstractVolumeMeasure.SentenciesCount)
+                            {
+                                message.RequestUri = new Uri(ApiHelper
+                                    .GetRouteForAnAbstractWithSpecifiedSentesiesCount(
+                                        request.SentensiesCount,
+                                        request.UserId,
+                                        request.ModelId), UriKind.Relative);
+                            }
+                        }
+                        else if (request.AbstractVolume == AbstractVolume.Relative)
+                        {
+                            message.RequestUri = new Uri(ApiHelper
+                                .GetRouteForAnAbstractByAbstractRelativeVolume(
+                                    request.PercentsOfAbstract,
+                                    request.UserId,
+                                    request.ModelId), UriKind.Relative);
+                        }
+                        var response = await _client.SendAsync(message, cancellationToken);
+                        var result = await response
+                            .Content
+                            .ReadFromJsonAsync<LanguageModelResponseDto>(cancellationToken);
+                        if (result == null)
+                            return Result<LanguageModelResponseDto>.Error("Не удалось получить ответ от сервера");
+                        return result;
+                    }
+                    else
+                    {
+                        return Result<LanguageModelResponseDto>.Error("Сервер недоступен");
+                    }
                 }
                 else
                 {
-                    return Result<AbstractResultDto>.Error(validationResult.Errors.AsOneString());
+                    return Result<LanguageModelResponseDto>.Error(validationResult.Errors.AsOneString());
                 }
             }
             catch (Exception ex)
             {
-                return Result<AbstractResultDto>.Error($"Что-то пошло не так. Причина: {ex.Message}");
+                return Result<LanguageModelResponseDto>.Error($"Что-то пошло не так. Причина: {ex.Message}");
             }
         }
 
@@ -56,7 +105,7 @@ namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
             {
                 return Result.Error("Выберите модель");
             }
-            if (query.AbstractionMethod == AbstractionMethod.None)
+            if (query.AbstractionMethod == AbstractionMethod.Unknown)
             {
                 return Result.Error("Выберите метод реферирования");
             }
