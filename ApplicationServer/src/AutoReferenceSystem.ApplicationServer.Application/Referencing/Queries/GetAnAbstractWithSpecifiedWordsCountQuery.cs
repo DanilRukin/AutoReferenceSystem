@@ -19,12 +19,16 @@ namespace AutoReferenceSystem.ApplicationServer.Application.Referencing.Queries
 
         public Guid UserId { get; private set; }
 
-        public GetAnAbstractWithSpecifiedWordsCountQuery(int modelId, string sourceText, int wordsCount, Guid userId)
+        public AbstractionMethod AbstractionMethod { get; private set; }
+
+        public GetAnAbstractWithSpecifiedWordsCountQuery(int modelId, string sourceText, int wordsCount,
+            Guid userId, AbstractionMethod abstractionMethod)
         {
             ModelId = modelId;
             SourceText = sourceText ?? throw new ArgumentNullException(nameof(sourceText));
             WordsCount = wordsCount;
             UserId = userId;
+            AbstractionMethod = abstractionMethod;
         }
     }
 }

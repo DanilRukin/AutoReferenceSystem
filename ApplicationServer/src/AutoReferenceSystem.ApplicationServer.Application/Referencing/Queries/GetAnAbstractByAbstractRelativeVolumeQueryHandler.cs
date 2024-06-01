@@ -36,7 +36,7 @@ namespace AutoReferenceSystem.ApplicationServer.Application.Referencing.Queries
                 modelId: request.ModelId,
                 token: cancellationToken,
                 query: request,
-                routeConstructor: (address, query) => ApiHelper.GetRouteForAnAbstractByAbstractRelativeVolume(address, query.RelativeVolume)
+                routeConstructor: (address, query) => ApiHelper.GetRouteForAnAbstractByAbstractRelativeVolume(address, query.RelativeVolume, query.AbstractionMethod)
              );
         }
     }

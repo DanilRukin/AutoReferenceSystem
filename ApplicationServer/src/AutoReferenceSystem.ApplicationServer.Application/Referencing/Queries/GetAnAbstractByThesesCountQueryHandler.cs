@@ -34,7 +34,7 @@ namespace AutoReferenceSystem.ApplicationServer.Application.Referencing.Queries
                 modelId: request.ModelId,
                 token: cancellationToken,
                 query: request,
-                routeConstructor: (address, query) => ApiHelper.GetRouteForAnAbstractByThesesCount(address, query.ThesesCount)
+                routeConstructor: (address, query) => ApiHelper.GetRouteForAnAbstractByThesesCount(address, query.ThesesCount, request.AbstractionMethod)
              );
         }
     }

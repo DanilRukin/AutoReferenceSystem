@@ -19,12 +19,16 @@ namespace AutoReferenceSystem.ApplicationServer.Application.Referencing.Queries
 
         public Guid UserId { get; private set; }
 
-        public GetAnAbstractByThesesCountQuery(int modelId, string sourceText, int thesesCount, Guid userId)
+        public AbstractionMethod AbstractionMethod { get; private set; }
+
+        public GetAnAbstractByThesesCountQuery(int modelId, string sourceText, int thesesCount,
+            Guid userId, AbstractionMethod abstractionMethod)
         {
             ModelId = modelId;
             SourceText = sourceText ?? throw new ArgumentNullException(nameof(sourceText));
             ThesesCount = thesesCount;
             UserId = userId;
+            AbstractionMethod = abstractionMethod;
         }
     }
 }

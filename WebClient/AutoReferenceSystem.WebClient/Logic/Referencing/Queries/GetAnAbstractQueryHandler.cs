@@ -52,7 +52,8 @@ namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
                                     .GetRouteForAnAbstractWithSpecifiedWordsCount(
                                         request.WordCount,
                                         request.UserId,
-                                        request.ModelId), UriKind.Relative);
+                                        request.ModelId,
+                                        request.AbstractionMethod), UriKind.Relative);
                             }
                             else if (request.Measure == AbsoluteAbstractVolumeMeasure.SentenciesCount)
                             {
@@ -60,7 +61,8 @@ namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
                                     .GetRouteForAnAbstractWithSpecifiedSentesiesCount(
                                         request.SentensiesCount,
                                         request.UserId,
-                                        request.ModelId), UriKind.Relative);
+                                        request.ModelId,
+                                        request.AbstractionMethod), UriKind.Relative);
                             }
                         }
                         else if (request.AbstractVolume == AbstractVolume.Relative)
@@ -69,7 +71,8 @@ namespace AutoReferenceSystem.WebClient.Logic.Referencing.Queries
                                 .GetRouteForAnAbstractByAbstractRelativeVolume(
                                     request.PercentsOfAbstract,
                                     request.UserId,
-                                    request.ModelId), UriKind.Relative);
+                                    request.ModelId,
+                                    request.AbstractionMethod), UriKind.Relative);
                         }
                         var response = await _client.SendAsync(message, cancellationToken);
                         var result = await response
