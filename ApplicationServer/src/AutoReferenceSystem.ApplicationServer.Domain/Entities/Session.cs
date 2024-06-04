@@ -25,6 +25,6 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Entities
         [Column("end_date")]
         public DateTime? EndDate { get; set; }
 
-        public IEnumerable<ReferensingQuery> ReferensingQueries { get; set; } = Enumerable.Empty<ReferensingQuery>();
+        public IEnumerable<ReferensingQuery>? ReferensingQueries { get; set; } = Enumerable.Empty<ReferensingQuery>();
     }
 }

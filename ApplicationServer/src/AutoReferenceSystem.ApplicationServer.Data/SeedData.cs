@@ -54,6 +54,8 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                     Password = "password",
                     Id = Guid.Parse("ecfe7fc8-9c0a-4ac3-a970-e964be2afac1")
                 };
+                context.Users.Add(TestUser);
+                context.SaveChanges();
 
                 TestUserSession = new Session()
                 {
@@ -61,24 +63,29 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                     BeginDate = startDate,
                     EndDate = endDate,
                 };
+                context.Sessions.Add(TestUserSession);
+                context.SaveChanges();
 
                 Bert = new Model()
                 {
-                    Id = 1,
                     Name = "BERT",
                 };
 
                 Llamma = new Model()
                 {
-                    Id = 2,
                     Name = "LLaMMa"
                 };
+
+                context.Models.AddRange(Bert, Llamma);
+                context.SaveChanges();
 
                 TestReferensingQuery = new ReferensingQuery()
                 {
                     Id = Guid.Parse("de7d0288-4528-4b36-8912-2f02f0850323"),
                     QueryNumber = 1,
                 };
+                context.ReferensingQueries.Add(TestReferensingQuery);
+                context.SaveChanges();
 
                 TestServer = new Server()
                 {
@@ -87,26 +94,17 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                     UserPassword = "123",
                 };
 
-                context.Users.Add(TestUser);
-                context.Sessions.Add(TestUserSession);
-                context.Models.AddRange(Bert, Llamma);
-                context.ReferensingQueries.Add(TestReferensingQuery);
                 context.Servers.Add(TestServer);
+                context.SaveChanges();
 
                 TestUser.Sessions?.Append(TestUserSession);
 
-                TestUserSession.User = TestUser;
-                TestUserSession.UserId = TestUser.Id;
                 TestUserSession.ReferensingQueries?.Append(TestReferensingQuery);
 
-                TestReferensingQuery.Session = TestUserSession;
-                TestReferensingQuery.SessionId = TestUserSession.Id;
-                TestReferensingQuery.Model = Bert;
-                TestReferensingQuery.ModelId = Bert.Id;
-
                 Bert.ReferensingQueries?.Append(TestReferensingQuery);
-                Bert.Server = TestServer;
-                Bert.ServerId = TestServer.Id;
+
+                TestServer.Models.Append(Llamma);
+                TestServer.Models.Append(Bert);
 
                 context.SaveChanges();
 

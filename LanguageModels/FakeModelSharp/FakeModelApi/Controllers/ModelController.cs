@@ -24,7 +24,7 @@ namespace FakeModelApi.Controllers
         public ActionResult HealthCheck() => Ok();
 
 
-        [HttpPut("abstract/with_theses/{count:int}/{abstractionMethod:string}")]
+        [HttpPut("abstract/with_theses/{count:int}/{abstractionMethod}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByThesesCount(
@@ -61,7 +61,7 @@ namespace FakeModelApi.Controllers
             }           
         }
 
-        [HttpPut("abstract/by_abstract_relative_volume/{relativeVolume:double}/{abstractionMethod:string}")]
+        [HttpPut("abstract/by_abstract_relative_volume/{relativeVolume:double}/{abstractionMethod}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByAbstractRelativeVolume(

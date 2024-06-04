@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using AutoReferenceSystem.ApplicationServer.Domain.Dtos
 @using AutoReferenceSystem.WebClient.Models
 
 <PageContainer Title="Реферирование">
@@ -36,7 +37,7 @@
              <br />
              <Card Title="Настройки реферирования">
                  <CardTabs>
-                     <Tabs Type="@TabType.Card" ActiveKey="@ActiveTabKey">
+                     <Tabs Type="@TabType.Card" >
                          <TabPane Key="1" Tab="По типу решаемой задачи">
                              <Title Level="3">Решаемая задача</Title>
                              <div>
