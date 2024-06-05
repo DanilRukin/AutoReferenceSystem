@@ -92,13 +92,12 @@ namespace AutoReferenceSystem.ApplicationServer.Server.Controllers
 
         private AbstractionMethod AbstractionMethodFromString(string abstractionMethod)
         {
+            string[] names = Enum.GetNames(typeof(AbstractionMethod));
             AbstractionMethod result = AbstractionMethod.Unknown;
-            if (Enum.TryParse(typeof(AbstractionMethod), abstractionMethod, out object? method))
+            if (names.Any(name => name.ToLower() == abstractionMethod.ToLower()))
             {
-                if (method != null)
-                {
-                    result = (AbstractionMethod)method;
-                }
+                string name = names.First(name => name.ToLower() == abstractionMethod.ToLower());
+                result = (AbstractionMethod)Enum.Parse(typeof(AbstractionMethod), name);
             }
             return result;
         }

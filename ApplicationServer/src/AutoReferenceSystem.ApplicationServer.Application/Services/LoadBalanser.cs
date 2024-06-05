@@ -29,9 +29,8 @@ namespace AutoReferenceSystem.ApplicationServer.Application.Services
                 .Servers
                 .Include(s => s.Models)
                 .ToListAsync();
-            var s = servers.Where(s => s.Models.FirstOrDefault(m => m.Id == modelId).ServerId == s.Id);
-                //.ToListAsync(cancellationToken);
-            return servers?.FirstOrDefault();
+            var s = servers.Where(s => s.Models.FirstOrDefault(m => m.Id == modelId).ServerId == s.Id).FirstOrDefault();
+            return s;
         }
     }
 }

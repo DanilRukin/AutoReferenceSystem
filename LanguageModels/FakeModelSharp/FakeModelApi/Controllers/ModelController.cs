@@ -98,7 +98,7 @@ namespace FakeModelApi.Controllers
             }
         }
 
-        [HttpPut("abstract/with_specified_words_count/{count:int}")]
+        [HttpPut("abstract/with_specified_words_count/{count:int}/{abstractionMethod}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedWordsCount(
@@ -135,7 +135,7 @@ namespace FakeModelApi.Controllers
             }
         }
 
-        [HttpPut("abstract/with_specified_sentesies_count/{count:int}")]
+        [HttpPut("abstract/with_specified_sentesies_count/{count:int}/{abstractionMethod}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedSentesiesCount(

@@ -32,6 +32,7 @@ namespace AutoReferenceSystem.ApplicationServer.Data
 
         public static void InitializeDatabase(AutoReferenceSystemContext context)
         {
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             ClearDatabase(context);
             FillDatabase(context);
@@ -55,6 +56,15 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                     Id = Guid.Parse("ecfe7fc8-9c0a-4ac3-a970-e964be2afac1")
                 };
                 context.Users.Add(TestUser);
+
+                TestServer = new Server()
+                {
+                    Address = "http://127.0.0.1:5002",
+                    User = "guest",
+                    UserPassword = "123",
+                };
+
+                context.Servers.Add(TestServer);
                 context.SaveChanges();
 
                 TestUserSession = new Session()
@@ -62,18 +72,26 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                     Id = Guid.Parse("32af054e-4c67-4d8c-846e-7baa76adfc22"),
                     BeginDate = startDate,
                     EndDate = endDate,
+                    User = TestUser,
+                    UserId = TestUser.Id
                 };
                 context.Sessions.Add(TestUserSession);
                 context.SaveChanges();
 
+                
+
                 Bert = new Model()
                 {
                     Name = "BERT",
+                    Server = TestServer,
+                    ServerId = TestServer.Id,
                 };
 
                 Llamma = new Model()
                 {
-                    Name = "LLaMMa"
+                    Name = "LLaMMa",
+                    Server = TestServer,
+                    ServerId = TestServer.Id,
                 };
 
                 context.Models.AddRange(Bert, Llamma);
@@ -83,29 +101,13 @@ namespace AutoReferenceSystem.ApplicationServer.Data
                 {
                     Id = Guid.Parse("de7d0288-4528-4b36-8912-2f02f0850323"),
                     QueryNumber = 1,
+                    Model = Bert,
+                    ModelId = Bert.Id,
+                    Session = TestUserSession,
+                    SessionId = TestUserSession.Id
                 };
+
                 context.ReferensingQueries.Add(TestReferensingQuery);
-                context.SaveChanges();
-
-                TestServer = new Server()
-                {
-                    Address = "192.168.1.123",
-                    User = "guest",
-                    UserPassword = "123",
-                };
-
-                context.Servers.Add(TestServer);
-                context.SaveChanges();
-
-                TestUser.Sessions?.Append(TestUserSession);
-
-                TestUserSession.ReferensingQueries?.Append(TestReferensingQuery);
-
-                Bert.ReferensingQueries?.Append(TestReferensingQuery);
-
-                TestServer.Models.Append(Llamma);
-                TestServer.Models.Append(Bert);
-
                 context.SaveChanges();
 
                 _empty = false;

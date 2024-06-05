@@ -1,5 +1,6 @@
 using AntDesign.ProLayout;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
@@ -14,10 +15,11 @@ namespace AutoReferenceSystem.WebClient
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddScoped(sp => new HttpClient 
+            IConfiguration configuration = builder.Configuration;
+
+            builder.Services.AddHttpClient("", client =>
             {
-                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress),
-                
+                client.BaseAddress = new Uri(configuration["ApiBaseAddress"], UriKind.Absolute);
             });
             builder.Services.AddAntDesign();
             builder.Services.Configure<ProSettings>(builder.Configuration.GetSection("ProSettings"));

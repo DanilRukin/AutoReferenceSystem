@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoReferenceSystemDb
 {
     [DbContext(typeof(AutoReferenceSystemContext))]
-    [Migration("20240604052242_InitAutoReferenceSystemDbContext")]
+    [Migration("20240605135222_InitAutoReferenceSystemDbContext")]
     partial class InitAutoReferenceSystemDbContext
     {
         /// <inheritdoc />
@@ -28,30 +28,23 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
             modelBuilder.Entity("AutoReferenceSystem.ApplicationServer.Domain.Entities.Attachment", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_attachment");
+                        .HasColumnType("uuid");
 
                     b.Property<long?>("AttachmentSizeInBytes")
-                        .HasColumnType("bigint")
-                        .HasColumnName("attachment_size_in_bytes");
+                        .HasColumnType("bigint");
 
                     b.Property<int>("AttachmentTypeId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_attachment_type");
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("CreationDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("creation_date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Path")
                         .IsRequired()
-                        .HasColumnType("text")
-                        .HasColumnName("path");
+                        .HasColumnType("text");
 
                     b.Property<Guid>("ReferensingQueryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_query");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -66,16 +59,14 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id_attachment_type");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("name");
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
 
@@ -86,24 +77,20 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id_characteristics");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CharacteristicTypeId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_characteristics_type");
+                        .HasColumnType("integer");
 
                     b.Property<int>("MeasureId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_measure");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)")
-                        .HasColumnName("name");
+                        .HasColumnType("character varying(128)");
 
                     b.HasKey("Id");
 
@@ -118,16 +105,14 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id_characteristics_type");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("character varying(50)")
-                        .HasColumnName("name");
+                        .HasColumnType("character varying(50)");
 
                     b.HasKey("Id");
 
@@ -138,18 +123,15 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CharacteristicId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_characteristics");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text")
-                        .HasColumnName("value");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -162,16 +144,14 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("measure_id");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("name");
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
@@ -182,20 +162,17 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id_model");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("character varying(100)")
-                        .HasColumnName("name");
+                        .HasColumnType("character varying(100)");
 
-                    b.Property<int>("ServerId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_server");
+                    b.Property<int?>("ServerId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -207,17 +184,14 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
             modelBuilder.Entity("AutoReferenceSystem.ApplicationServer.Domain.Entities.ModelCharacteristic", b =>
                 {
                     b.Property<int>("ModelId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_model");
+                        .HasColumnType("integer");
 
                     b.Property<int>("CharacteristicId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_characteristics");
+                        .HasColumnType("integer");
 
                     b.Property<string>("Value")
                         .HasMaxLength(512)
-                        .HasColumnType("character varying(512)")
-                        .HasColumnName("value");
+                        .HasColumnType("character varying(512)");
 
                     b.HasKey("ModelId", "CharacteristicId");
 
@@ -229,17 +203,14 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
             modelBuilder.Entity("AutoReferenceSystem.ApplicationServer.Domain.Entities.ReferencingQueryCharacteristic", b =>
                 {
                     b.Property<int>("CharacteristicId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_characteristics");
+                        .HasColumnType("integer");
 
                     b.Property<Guid>("ReferensingQueryId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_query");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("Value")
                         .HasMaxLength(512)
-                        .HasColumnType("character varying(512)")
-                        .HasColumnName("value");
+                        .HasColumnType("character varying(512)");
 
                     b.HasKey("CharacteristicId", "ReferensingQueryId");
 
@@ -251,21 +222,16 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
             modelBuilder.Entity("AutoReferenceSystem.ApplicationServer.Domain.Entities.ReferensingQuery", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_query");
+                        .HasColumnType("uuid");
 
                     b.Property<int>("ModelId")
-                        .HasColumnType("integer")
-                        .HasColumnName("id_model");
+                        .HasColumnType("integer");
 
                     b.Property<int>("QueryNumber")
-                        .HasColumnType("integer")
-                        .HasColumnName("query_number");
+                        .HasColumnType("integer");
 
                     b.Property<Guid>("SessionId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_session");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -280,28 +246,24 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id_server");
+                        .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)")
-                        .HasColumnName("address");
+                        .HasColumnType("character varying(128)");
 
                     b.Property<string>("User")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)")
-                        .HasColumnName("user");
+                        .HasColumnType("character varying(128)");
 
                     b.Property<string>("UserPassword")
                         .IsRequired()
                         .HasMaxLength(128)
-                        .HasColumnType("character varying(128)")
-                        .HasColumnName("user_password");
+                        .HasColumnType("character varying(128)");
 
                     b.HasKey("Id");
 
@@ -312,20 +274,16 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id_session");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("BeginDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("begin_date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime?>("EndDate")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("end_date");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_id");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -338,37 +296,31 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_id");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(250)
-                        .HasColumnType("character varying(250)")
-                        .HasColumnName("first_name");
+                        .HasColumnType("character varying(250)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(250)
-                        .HasColumnType("character varying(250)")
-                        .HasColumnName("last_name");
+                        .HasColumnType("character varying(250)");
 
                     b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(250)
-                        .HasColumnType("character varying(250)")
-                        .HasColumnName("login");
+                        .HasColumnType("character varying(250)");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasMaxLength(250)
-                        .HasColumnType("character varying(250)")
-                        .HasColumnName("password");
+                        .HasColumnType("character varying(250)");
 
                     b.Property<string>("Patronymic")
                         .HasMaxLength(250)
-                        .HasColumnType("character varying(250)")
-                        .HasColumnName("patronymic");
+                        .HasColumnType("character varying(250)");
 
                     b.HasKey("Id");
 
@@ -428,9 +380,7 @@ namespace AutoReferenceSystem.ApplicationServer.Data.PostgreSql.Migrations.AutoR
                 {
                     b.HasOne("AutoReferenceSystem.ApplicationServer.Domain.Entities.Server", "Server")
                         .WithMany("Models")
-                        .HasForeignKey("ServerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServerId");
 
                     b.Navigation("Server");
                 });

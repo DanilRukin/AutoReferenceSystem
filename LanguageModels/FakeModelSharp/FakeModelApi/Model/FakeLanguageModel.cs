@@ -79,8 +79,8 @@ namespace FakeModelApi.Model
                 ErrorText = "",
                 IsSuccess = true,
                 ModelName = this.ModelName,
-                DeviceType = this.DeviceType,
-                UsedAbstractionMethod = abstractionMethod,
+                DeviceType = Enum.GetName(this.DeviceType) ?? string.Empty,
+                UsedAbstractionMethod = Enum.GetName(abstractionMethod) ?? string.Empty,
                 CpuMetrics = new CpuMetricsDto()
                 {
                     CpuMemoryTotalBytes = CPU_MEMORY_TOTAL_BYTES,
@@ -117,11 +117,11 @@ namespace FakeModelApi.Model
             var response = new LanguageModelResponseDto()
             {
                 Abstract = "",
-                DeviceType = this.DeviceType,
+                DeviceType = Enum.GetName(this.DeviceType) ?? string.Empty,
                 ErrorText = errorText,
                 IsSuccess = false,
                 ModelName = this.ModelName,
-                UsedAbstractionMethod = abstractionMethod,
+                UsedAbstractionMethod = Enum.GetName(abstractionMethod) ?? string.Empty,
                 CpuMetrics = new CpuMetricsDto()
                 {
                     CpuMemoryTotalBytes = CPU_MEMORY_TOTAL_BYTES,

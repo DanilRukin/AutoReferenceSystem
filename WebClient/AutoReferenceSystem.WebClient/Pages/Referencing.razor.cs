@@ -70,7 +70,7 @@ namespace AutoReferenceSystem.WebClient.Pages
                 Model.WordsCount == null ? 0 : (int)Model.WordsCount,
                 Model.SentenciesCount == null ? 0 : (int)Model.SentenciesCount,
                 Model.AbstractRelativeVolume,
-                Guid.Empty // TODO: user!!!!
+                Guid.Parse("ecfe7fc8-9c0a-4ac3-a970-e964be2afac1") // TODO: user!!!!
                 );
             var result = await Mediator.Send(query);
             if (!result.IsSuccess)
