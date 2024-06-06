@@ -7,7 +7,7 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Entities
     [Table("ListValuesCharacteristics")]
     public class ListValuesCharacteristic
     {
-        [Column("id")]
+        //[Column("id")]
         [Key]
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,11 +15,11 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Entities
 
         public Characteristic Characteristic { get; set; }
 
-        [Column("id_characteristics")]
+        //[Column("id_characteristics")]
         [Required]
         public int CharacteristicId { get; set; }
 
-        [Column("value")]
+        //[Column("value")]
         public string? Value { get; set; } = string.Empty;
     }
 }

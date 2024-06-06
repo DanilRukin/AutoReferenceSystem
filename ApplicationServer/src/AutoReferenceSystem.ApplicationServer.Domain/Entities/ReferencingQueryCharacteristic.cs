@@ -9,17 +9,17 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Entities
     {
         public Characteristic Characteristic { get; set; }
 
-        [Column("id_characteristics")]
+        //[Column("id_characteristics")]
         [Required]
         public int CharacteristicId { get; set; }
 
         public ReferensingQuery ReferensingQuery { get; set; }
 
-        [Column("id_query")]
+        //[Column("id_query")]
         [Required]
         public Guid ReferensingQueryId { get; set; }
 
-        [Column("value")]
+        //[Column("value")]
         [MaxLength(512)]
         public string? Value { get; set; } = string.Empty;
     }

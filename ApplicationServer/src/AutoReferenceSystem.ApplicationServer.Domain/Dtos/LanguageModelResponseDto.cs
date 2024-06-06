@@ -48,6 +48,11 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Dtos
         /// <summary>
         /// Тип устройства, на котором проиводились расчеты
         /// </summary>
-        public ProcessingDeviceType DeviceType { get; set; } = ProcessingDeviceType.Unknown;
+        public string DeviceType { get; set; } = string.Empty;
+
+        /// <summary>
+        /// Метод реферирования, используемый для получения результата
+        /// </summary>
+        public string UsedAbstractionMethod { get; set; } = string.Empty;
     }
 }

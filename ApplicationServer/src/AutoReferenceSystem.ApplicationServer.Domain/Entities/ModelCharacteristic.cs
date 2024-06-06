@@ -9,17 +9,17 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Entities
     {
         public Model Model { get; set; }
 
-        [Column("id_model")]
+        //[Column("id_model")]
         [Required]
         public int ModelId { get; set; }
 
         public Characteristic Characteristic { get; set; }
 
-        [Column("id_characteristics")]
+        //[Column("id_characteristics")]
         [Required]
         public int CharacteristicId { get; set; }
 
-        [Column("value")]
+        //[Column("value")]
         [MaxLength(512)]
         public string? Value { get; set; } = string.Empty;
     }

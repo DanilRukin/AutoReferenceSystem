@@ -21,11 +21,16 @@ namespace AutoReferenceSystem.ApplicationServer.Application.Services
 
         public async Task<Server?> GetFreeModelServer(int modelId, CancellationToken cancellationToken = default)
         {
+            //var servers = await _context
+            //    .Servers
+            //    .Join(_context.Models, s => s.Id, m => m.ServerId, (s, m) => s)
+            //    .ToListAsync(cancellationToken);
             var servers = await _context
                 .Servers
-                .Join(_context.Models, s => s.Id, m => m.ServerId, (s, m) => s)
-                .ToListAsync(cancellationToken);
-            return servers?.FirstOrDefault();
+                .Include(s => s.Models)
+                .ToListAsync();
+            var s = servers.Where(s => s.Models.FirstOrDefault(m => m.Id == modelId).ServerId == s.Id).FirstOrDefault();
+            return s;
         }
     }
 }

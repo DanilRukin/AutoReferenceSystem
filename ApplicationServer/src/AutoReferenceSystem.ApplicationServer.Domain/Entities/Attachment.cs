@@ -7,30 +7,31 @@ namespace AutoReferenceSystem.ApplicationServer.Domain.Entities
     [Table("Attachments")]
     public class Attachment
     {
-        [Column("id_attachment")]
+        //[Column("id_attachment")]
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [Column("creation_date")]
+        //[Column("creation_date")]
         [Required]
         public DateTime CreationDate { get; set; }
 
-        [Column("attachment_size_in_bytes")]
+        //[Column("attachment_size_in_bytes")]
         public long? AttachmentSizeInBytes { get; set; }
 
         public AttachmentType AttachmentType { get; set; }
 
-        [Column("id_attachment_type")]
+        //[Column("id_attachment_type")]
         [Required]
         public int AttachmentTypeId { get; set; }
 
-        [Column("path")]
+        //[Column("path")]
         public string Path { get; set; } = string.Empty;
 
-        public ReferensingQuery ReferensingQuery { get; set; }
+        public ReferensingQuery? ReferensingQuery { get; set; }
 
-        [Column("id_query")]
+        //[Column("id_query")]
         [Required]
         public Guid ReferensingQueryId { get; set; }
     }

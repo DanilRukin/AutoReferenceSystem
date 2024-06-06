@@ -9,14 +9,25 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AutoReferenceSystem.ApplicationServer.Application\AutoReferenceSystem.ApplicationServer.Application.csproj" />
+    <ProjectReference Include="..\AutoReferenceSystem.ApplicationServer.Data.PostgreSql\AutoReferenceSystem.ApplicationServer.Data.PostgreSql.csproj" />
     <ProjectReference Include="..\AutoReferenceSystem.ApplicationServer.Data\AutoReferenceSystem.ApplicationServer.Data.csproj" />
     <ProjectReference Include="..\AutoReferenceSystem.ApplicationServer.Domain\AutoReferenceSystem.ApplicationServer.Domain.csproj" />
     <ProjectReference Include="..\AutoReferenceSystem.ApplicationServer.SharedKernel\AutoReferenceSystem.ApplicationServer.SharedKernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

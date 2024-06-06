@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "c4749907-ef63-40b9-bf22-f35019e7d2f0",
+		"name": "AutoReferenceSystem.Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "35985376"
+	},
+	"item": [
+		{
+			"name": "TestAPi",
+			"item": [
+				{
+					"name": "GetAnAbstractByThesesCount",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Традиционная статистическая система в здравоохранении основана на получении данных в виде отчетов, которые составляются в низовых учреждениях и затем суммируются на промежуточных и высших уровнях\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5179/api/Referencing/abstract/with_theses/1/1/abstraction/ecfe7fc8-9c0a-4ac3-a970-e964be2afac1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetAnAbstractByAbstractRelativeVolume",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Традиционная статистическая система в здравоохранении основана на получении данных в виде отчетов, которые составляются в низовых учреждениях и затем суммируются на промежуточных и высших уровнях\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5179/api/Referencing/abstract/by_abstract_relative_volume/0.75/1/abstraction/ecfe7fc8-9c0a-4ac3-a970-e964be2afac1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetAnAbstractWithSpecifiedWordsCount",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Традиционная статистическая система в здравоохранении основана на получении данных в виде отчетов, которые составляются в низовых учреждениях и затем суммируются на промежуточных и высших уровнях\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5179/api/Referencing/abstract/with_specified_words_count/43/1/abstraction/ecfe7fc8-9c0a-4ac3-a970-e964be2afac1"
+					},
+					"response": []
+				},
+				{
+					"name": "GetAnAbstractWithSpecifiedSentesiesCount",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"Традиционная статистическая система в здравоохранении основана на получении данных в виде отчетов, которые составляются в низовых учреждениях и затем суммируются на промежуточных и высших уровнях\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:5179/api/Referencing/abstract/with_specified_sentesies_count/3/1/abstraction/ecfe7fc8-9c0a-4ac3-a970-e964be2afac1"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

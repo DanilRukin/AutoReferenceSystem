@@ -1,11 +1,11 @@
 ﻿﻿﻿//
 // Add migrations
 //
-Add-Migration InitAutoReferenceSystemDbContext -c AutoReferenceSystemContext -o Migrations/AutoReferenceSystemDb
+Add-Migration InitAutoReferenceSystemDbContext -c AutoReferenceSystemContext -o Migrations/AutoReferenceSystemDb -Verbose
 //
 // Update-Database
 //
-Update-Database -Context AutoReferenceSystemContext
+Update-Database -Context AutoReferenceSystemContext -Verbose
 
 
 // note: to add-migration and update database you need to select AutoReferenceSystem.ApplicationServer.Server as startup project,

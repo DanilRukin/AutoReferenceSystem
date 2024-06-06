@@ -22,7 +22,7 @@ namespace AutoReferenceSystem.ApplicationServer.Server.Controllers
         public ActionResult HealthCheck() => Ok();
 
 
-        [HttpPut("abstract/with_theses/{count:int}/{modelId:int}/{abstractionMethod:string}/{userId:guid}")]
+        [HttpPut("abstract/with_theses/{count:int}/{modelId:int}/{abstractionMethod}/{userId:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByThesesCount(
@@ -39,7 +39,7 @@ namespace AutoReferenceSystem.ApplicationServer.Server.Controllers
             return ResultErrorsHandler.Handle(response);
         }
 
-        [HttpPut("abstract/by_abstract_relative_volume/{relativeVolume:double}/{modelId:int}/{abstractionMethod:string}/{userId:guid}")]
+        [HttpPut("abstract/by_abstract_relative_volume/{relativeVolume:double}/{modelId:int}/{abstractionMethod}/{userId:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractByAbstractRelativeVolume(
@@ -56,7 +56,7 @@ namespace AutoReferenceSystem.ApplicationServer.Server.Controllers
             return ResultErrorsHandler.Handle(response);
         }
 
-        [HttpPut("abstract/with_specified_words_count/{count:int}/{modelId:int}/{abstractionMethod:string}/{userId:guid}")]
+        [HttpPut("abstract/with_specified_words_count/{count:int}/{modelId:int}/{abstractionMethod}/{userId:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedWordsCount(
@@ -73,7 +73,7 @@ namespace AutoReferenceSystem.ApplicationServer.Server.Controllers
             return ResultErrorsHandler.Handle(response);
         }
 
-        [HttpPut("abstract/with_specified_sentesies_count/{count:int}/{modelId:int}/{abstractionMethod:string}/{userId:guid}")]
+        [HttpPut("abstract/with_specified_sentesies_count/{count:int}/{modelId:int}/{abstractionMethod}/{userId:guid}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<LanguageModelResponseDto>> GetAnAbstractWithSpecifiedSentesiesCount(
@@ -92,13 +92,12 @@ namespace AutoReferenceSystem.ApplicationServer.Server.Controllers
 
         private AbstractionMethod AbstractionMethodFromString(string abstractionMethod)
         {
+            string[] names = Enum.GetNames(typeof(AbstractionMethod));
             AbstractionMethod result = AbstractionMethod.Unknown;
-            if (Enum.TryParse(typeof(AbstractionMethod), abstractionMethod, out object? method))
+            if (names.Any(name => name.ToLower() == abstractionMethod.ToLower()))
             {
-                if (method != null)
-                {
-                    result = (AbstractionMethod)method;
-                }
+                string name = names.First(name => name.ToLower() == abstractionMethod.ToLower());
+                result = (AbstractionMethod)Enum.Parse(typeof(AbstractionMethod), name);
             }
             return result;
         }

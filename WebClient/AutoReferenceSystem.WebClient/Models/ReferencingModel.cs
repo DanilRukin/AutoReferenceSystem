@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AutoReferenceSystem.ApplicationServer.Domain.Dtos;
+using System.Collections.Generic;
 
 namespace AutoReferenceSystem.WebClient.Models
 {
