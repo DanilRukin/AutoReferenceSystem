@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReferenceSystem.Applica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReferenceSystem.WebClient", "..\WebClient\AutoReferenceSystem.WebClient\AutoReferenceSystem.WebClient.csproj", "{DD528644-2E0D-4310-9FC4-BB6B2612D8A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoReferenceSystem.ApplicationServer.Data.PostgreSql", "src\AutoReferenceSystem.ApplicationServer.Data.PostgreSql\AutoReferenceSystem.ApplicationServer.Data.PostgreSql.csproj", "{56663590-A8A9-45A8-BAA6-992B616AC872}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoReferenceSystem.ApplicationServer.Data.PostgreSql", "src\AutoReferenceSystem.ApplicationServer.Data.PostgreSql\AutoReferenceSystem.ApplicationServer.Data.PostgreSql.csproj", "{56663590-A8A9-45A8-BAA6-992B616AC872}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

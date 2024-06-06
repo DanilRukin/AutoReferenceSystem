@@ -1,4 +1,5 @@
 ﻿@namespace AutoReferenceSystem.WebClient
+@using AutoReferenceSystem.WebClient.Infrastructure.Data
 @inherits LayoutComponentBase
 
 <AntDesign.ProLayout.BasicLayout 
@@ -19,6 +20,16 @@
 
 @code
 {
+    [Inject]
+    protected NavigationManager NavigationManager { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        NavigationManager.NavigateTo(PageAddresses.LoginPageAddress);
+        return;
+    }
+
     [Inject] 
     public HttpClient HttpClient { get; set; }
 

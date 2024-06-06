@@ -1,22 +1,32 @@
 ﻿@page "/login"
 
-<Form Model="@Model"
-      OnFinish="OnFinish"
-      OnFinishFailed="OnFinishFailed"
-      LabelColSpan="8"
-      WrapperColSpan="16">
-    <FormItem Label="Логин">
-        <Input @bind-Value="@context.UserName"/>
-    </FormItem>
-    <FormItem Label="Пароль">
-        <InputPassword @bind-Value="@context.Password" />
-    </FormItem>
-    <FormItem Label="Запомнить меня">
-        <Checkbox @bind-Value="@context.RememberMe" />
-    </FormItem>
-    <FormItem WrapperColOffset="8" WrapperColSpan="16">
-        <Button Type="@ButtonType.Primary" HtmlType="submit">
-            Войти
-        </Button>
-    </FormItem>
-</Form>
+<div>
+    <Row Align="center">
+        <Card Bordered="true" Style="width:400px" Title="AutoRefereneSystem">
+            <Body>
+                <Form Model="@Model"
+                      OnFinish="OnFinish"
+                      OnFinishFailed="OnFinishFailed"
+                      LabelColSpan="8"
+                      WrapperColSpan="16">
+                    <FormItem Label="Логин">
+                        <Input @bind-Value="@context.UserName" />
+                    </FormItem>
+                    <FormItem Label="Пароль">
+                        <InputPassword @bind-Value="@context.Password" />
+                    </FormItem>
+                    <FormItem Label="Запомнить меня">
+                        <Checkbox @bind-Value="@context.RememberMe" />
+                    </FormItem>
+                    <FormItem WrapperColOffset="8" WrapperColSpan="16">
+                        <Button Type="@ButtonType.Primary" HtmlType="submit" OnClick="LogIn">
+                            Войти
+                        </Button>
+                    </FormItem>
+                </Form>
+            </Body>
+        </Card>
+    </Row>
+</div>
+
+

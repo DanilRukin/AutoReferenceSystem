@@ -1,0 +1,68 @@
+﻿@page "/statistics/common"
+@using AutoReferenceSystem.WebClient.Logic.Extensions
+@using AutoReferenceSystem.WebClient.Models.Statistic
+
+
+<PageContainer Title="Общая статистика">
+    <Breadcrumb>
+        <Breadcrumb>
+            <BreadcrumbItem>Статистика/Общее</BreadcrumbItem>
+        </Breadcrumb>
+    </Breadcrumb>
+    <Content>
+        <span>Здесь вы можете получить пересказ исходного текста, выбрав все необходимые опции.</span>
+    </Content>
+    <ChildContent>
+        <Card>
+            <Table DataSource="_servers" TItem="ServerData">
+                <TitleTemplate>
+                    <GridRow>
+                        <GridCol Span="4">
+                            <Title Level="3">Доступные сервера моделей</Title>
+                        </GridCol>
+                        <GridCol Span="8" Offset="12">
+                            <Search Placeholder="Поиск"/>
+                        </GridCol>
+                    </GridRow>
+                </TitleTemplate>
+                <ColumnDefinitions>
+                    <PropertyColumn Property="c=>c.Host"/>
+                    <PropertyColumn Property="c=>c.Label"/>
+                    <PropertyColumn Property="c=>c.Models">
+                        @context.Models.AsOneString()            
+                    </PropertyColumn>
+                </ColumnDefinitions>
+            </Table>
+            <Divider />
+            <br />
+            <br />
+
+
+            <Title Level="3">Модель: </Title>
+
+            <div>
+                <GridRow Gutter="(16, 16)">
+                    <GridCol Span="12">
+                        <Text>Some text</Text>
+                    </GridCol>
+                    <GridCol Span="12">
+                        <Text>Some Text</Text>
+                    </GridCol>
+                </GridRow>
+                <GridRow Gutter="(16, 16)">
+                    <GridCol Span="12">
+                        <Text>Some text</Text>
+                    </GridCol>
+                    <GridCol Span="12">
+                        <Text>Some Text</Text>
+                    </GridCol>
+                </GridRow>
+            </div>
+             <br />
+             <br />
+         </Card>
+     </ChildContent>
+ </PageContainer>
+
+
+
