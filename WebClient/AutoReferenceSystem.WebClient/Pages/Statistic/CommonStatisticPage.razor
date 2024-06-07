@@ -1,6 +1,7 @@
 ﻿@page "/statistics/common"
 @using AutoReferenceSystem.WebClient.Logic.Extensions
 @using AutoReferenceSystem.WebClient.Models.Statistic
+@using AntDesign.Charts
 
 
 <PageContainer Title="Общая статистика">
@@ -40,21 +41,29 @@
 
             <Title Level="3">Модель: </Title>
 
-            <div>
+            <div style="margin-top:2em">
                 <GridRow Gutter="(16, 16)">
                     <GridCol Span="12">
-                        <Text>Some text</Text>
+                        <Title Level="4">"Запросы на инференс"</Title>
+                        <br/>
+                        <Line @ref="_inferenceRequestsChart" Data="_inferenceAllRequests" Config="_inferenceRequestsChartConfig"/>
                     </GridCol>
                     <GridCol Span="12">
-                        <Text>Some Text</Text>
+                        <Title Level="4">"Средняя (общая) загрузка ЦП"</Title>
+                        <br />
+                        <Line @ref="_cpuUtilizationChart" Data="_cpuUtilizationData" Config="_cpuUtilizationChartConfig" />
                     </GridCol>
                 </GridRow>
                 <GridRow Gutter="(16, 16)">
                     <GridCol Span="12">
-                        <Text>Some text</Text>
+                        <Title Level="4">"Средняя (общая) загрузка видеокарты"</Title>
+                        <br />
+                        <Line @ref="_gpuUtilizationChart" Data="_gpuUtilizationData" Config="_gpuUtilizationChartConfig" />
                     </GridCol>
                     <GridCol Span="12">
-                        <Text>Some Text</Text>
+                        <Title Level="4">"Средняя нагрузка на ОЗУ"</Title>
+                        <br />
+                        <Line @ref="_memoryUtilizationChart" Data="_memoryUtilizationData" Config="_memoryUtilizationChartConfig" />
                     </GridCol>
                 </GridRow>
             </div>
