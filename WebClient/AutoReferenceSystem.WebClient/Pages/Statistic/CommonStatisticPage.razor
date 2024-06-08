@@ -15,7 +15,16 @@
     </Content>
     <ChildContent>
         <Card>
-            <Table DataSource="_servers" TItem="ServerData">
+            <Table 
+                DataSource="@_servers"
+                TItem="ServerData"
+                ScrollY="300px"
+                PageSize="25"
+                RowKey="@(item => item.Host)"
+                @ref="@_table"
+                @bind-SelectedRows="_selectedServers"
+                Bordered="true"
+            >
                 <TitleTemplate>
                     <GridRow>
                         <GridCol Span="4">
@@ -27,10 +36,11 @@
                     </GridRow>
                 </TitleTemplate>
                 <ColumnDefinitions>
-                    <PropertyColumn Property="c=>c.Host"/>
-                    <PropertyColumn Property="c=>c.Label"/>
-                    <PropertyColumn Property="c=>c.Models">
-                        @context.Models.AsOneString()            
+                    <Selection Key="@(context.Host)" Type="radio" />
+                    <PropertyColumn Property="c=>c.Host" Title="Хост" Sortable/>
+                    <PropertyColumn Property="c=>c.Label" Title="Метка" Sortable/>
+                    <PropertyColumn Property="c=>c.Models" Title="Размещенные модели" Sortable>
+                        @context.Models.Select(m => m.Name).AsOneString()            
                     </PropertyColumn>
                 </ColumnDefinitions>
             </Table>
@@ -39,7 +49,7 @@
             <br />
 
 
-            <Title Level="3">Модель: </Title>
+            <Title Level="3">Модель: @_selectedServers.FirstOrDefault()?.Models.FirstOrDefault()?.Name</Title>
 
             <div style="margin-top:2em">
                 <GridRow Gutter="(16, 16)">
@@ -54,7 +64,7 @@
                         <Line @ref="_cpuUtilizationChart" Data="_cpuUtilizationData" Config="_cpuUtilizationChartConfig" />
                     </GridCol>
                 </GridRow>
-                <GridRow Gutter="(16, 16)">
+                <GridRow Gutter="(16, 16)" style="margin-top:2em">
                     <GridCol Span="12">
                         <Title Level="4">"Средняя (общая) загрузка видеокарты"</Title>
                         <br />
@@ -64,6 +74,18 @@
                         <Title Level="4">"Средняя нагрузка на ОЗУ"</Title>
                         <br />
                         <Line @ref="_memoryUtilizationChart" Data="_memoryUtilizationData" Config="_memoryUtilizationChartConfig" />
+                    </GridCol>
+                </GridRow>
+                <GridRow Gutter="(16, 16)" style="margin-top:2em">
+                    <GridCol Span="12">
+                        <Title Level="4">"Среднее время обработки запроса"</Title>
+                        <br />
+                        <Pie @ref="_averageRequestProcessingTimeChart" Data="_averageRequestProcessingTimeData" Config="_averageRequestProcessingTimeChartConfig" />
+                    </GridCol>
+                    <GridCol Span="12">
+                        <Title Level="4">"Разбиение запросов по методу реферирования"</Title>
+                        <br />
+                        <Pie @ref="_abstractionMethodQueriesSplitChart" Data="_abstractionMethodQueriesSplitData" Config="_abstractionMethodQueriesSplitChartConfig" />
                     </GridCol>
                 </GridRow>
             </div>

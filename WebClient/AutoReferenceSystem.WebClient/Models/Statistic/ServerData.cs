@@ -9,6 +9,6 @@ namespace AutoReferenceSystem.WebClient.Models.Statistic
 
         public string Label { get; set; }
 
-        public ICollection<string> Models { get; set; }
+        public ICollection<ModelData> Models { get; set; }
     }
 }
